@@ -1,7 +1,7 @@
 const socialLinks = [
   { href: 'https://github.com/ngoleon', label: 'GitHub' },
   { href: 'https://linkedin.com/in/ngoleon', label: 'LinkedIn' },
-  { href: 'mailto:leon@example.com', label: 'Email' },
+  { href: 'mailto:ngo.leon@gmail.com', label: 'Email' },
 ];
 
 export default function Footer() {

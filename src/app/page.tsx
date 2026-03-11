@@ -8,10 +8,10 @@ import { projects } from '@/data/projects';
 import { experience } from '@/data/experience';
 
 const skills = {
-  Languages: ['TypeScript', 'Python', 'Go', 'SQL'],
-  Frameworks: ['React', 'Next.js', 'Node.js', 'FastAPI'],
-  Tools: ['Git', 'Docker', 'Terraform', 'PostgreSQL'],
-  Platforms: ['AWS', 'Vercel', 'Linux'],
+  Languages: ['C#', 'Java', 'TypeScript', 'Python', 'C/C++', 'SQL', 'HCL'],
+  Backend: ['.NET 10', 'Spring Boot', 'Node.js', 'React', 'Wolverine CQRS'],
+  Cloud: ['Azure', 'AWS', 'Kubernetes', 'Terragrunt', 'Docker'],
+  DevOps: ['ArgoCD', 'GitHub Actions', 'Helm', 'Grafana', 'OpenTelemetry'],
 };
 
 const socialLinks = [
@@ -33,15 +33,15 @@ export default function Home() {
           <ScrollReveal delay={0.05}>
             <div className="mb-6 text-[clamp(1rem,3vw,1.5rem)]">
               <TextDecrypt
-                text="Software Engineer"
+                text="Software Developer"
                 className="font-medium text-accent"
                 duration={600}
               />
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <p className="max-w-[50ch] text-base leading-relaxed text-text-muted">
-              I build fast, reliable systems — from component libraries to distributed backends.
+            <p className="max-w-[55ch] text-base leading-relaxed text-text-muted">
+              Cloud-native microservices, platform engineering, and AI-assisted developer tooling — from .NET backends on Azure to embedded Linux systems.
             </p>
           </ScrollReveal>
         </div>
@@ -70,17 +70,18 @@ export default function Home() {
             <div>
               <ScrollReveal>
                 <p className="mb-10 max-w-[55ch] text-base leading-[1.75] text-text-muted">
-                  Software engineer with a focus on building performant, well-crafted web
-                  applications. I work across the stack — from designing component systems
-                  and optimizing database queries to setting up CI/CD pipelines. Currently
-                  interested in developer tooling and infrastructure.
+                  Software developer with experience across enterprise cloud-native microservices,
+                  platform engineering, and full-stack development. Currently building .NET 10
+                  microservice platforms on Azure with Kubernetes, designing infrastructure-as-code
+                  with Terragrunt, and developing AI-assisted developer tooling. Background spans
+                  embedded systems, serverless backends, and community-facing product development.
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={0.05}>
                 <div className="space-y-4">
                   {Object.entries(skills).map(([category, items]) => (
                     <div key={category} className="flex flex-wrap items-center gap-2">
-                      <span className="w-24 shrink-0 font-mono text-xs uppercase tracking-wider text-text-dim">
+                      <span className="w-20 shrink-0 font-mono text-xs uppercase tracking-wider text-text-dim">
                         {category}
                       </span>
                       <div className="flex flex-wrap gap-2">
@@ -154,10 +155,10 @@ export default function Home() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <a
-              href="mailto:leon@example.com"
+              href="mailto:ngo.leon@gmail.com"
               className="mb-8 inline-block text-lg text-accent transition-shadow hover:shadow-glow-sm"
             >
-              leon@example.com
+              ngo.leon@gmail.com
             </a>
           </ScrollReveal>
           <ScrollReveal delay={0.15}>
