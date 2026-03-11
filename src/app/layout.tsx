@@ -1,14 +1,26 @@
 import type { Metadata } from 'next';
-import { JetBrains_Mono } from 'next/font/google';
+import { Syne, DM_Sans, JetBrains_Mono } from 'next/font/google';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ClientProviders from '@/components/ClientProviders';
 import './globals.css';
 
+const syne = Syne({
+  subsets: ['latin'],
+  variable: '--font-syne',
+  display: 'swap',
+});
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+});
+
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
-  variable: '--font-mono',
+  variable: '--font-jetbrains-mono',
   display: 'swap',
 });
 
@@ -18,14 +30,14 @@ export const metadata: Metadata = {
     default: 'Leon Ngo — Software Engineer',
     template: '%s — Leon Ngo',
   },
-  description: 'Personal portfolio of Leon Ngo, software engineer.',
+  description: 'Software engineer building fast, reliable systems — from component libraries to distributed backends.',
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
   openGraph: {
     title: 'Leon Ngo — Software Engineer',
-    description: 'Personal portfolio of Leon Ngo, software engineer.',
+    description: 'Software engineer building fast, reliable systems — from component libraries to distributed backends.',
     url: 'https://leon.dev',
     siteName: 'Leon Ngo',
     locale: 'en_US',
@@ -35,7 +47,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Leon Ngo — Software Engineer',
-    description: 'Personal portfolio of Leon Ngo, software engineer.',
+    description: 'Software engineer building fast, reliable systems — from component libraries to distributed backends.',
   },
   robots: {
     index: true,
@@ -49,8 +61,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={jetbrainsMono.variable}>
-      <body style={{ backgroundColor: '#0a0a0a' }}>
+    <html lang="en" className={`${syne.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}>
+      <body style={{ backgroundColor: '#09090b' }}>
         <ClientProviders />
         <Navigation />
         <main className="min-h-screen pt-14">

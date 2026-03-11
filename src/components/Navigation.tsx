@@ -1,21 +1,19 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
 const navLinks = [
-  { href: '/projects', label: './projects' },
-  { href: '/about', label: './about' },
-  { href: '/contact', label: './contact' },
+  { href: '#about', label: 'About' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#contact', label: 'Contact' },
 ];
 
 export default function Navigation() {
-  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Dismiss mobile menu on Escape
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setMobileOpen(false);
@@ -24,49 +22,29 @@ export default function Navigation() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
-
   return (
     <>
       <nav aria-label="Main navigation" className="fixed top-0 z-50 w-full border-b border-border bg-surface/80 backdrop-blur-lg">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
-          {/* Home link */}
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-3">
           <Link
             href="/"
-            className="text-sm font-medium text-text hover:text-accent transition-colors"
+            className="font-heading text-sm font-semibold text-text transition-colors hover:text-accent"
           >
-            ~/leon
+            Leon Ngo
           </Link>
 
-          {/* Desktop links */}
           <div className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`text-sm transition-colors ${
-                    isActive
-                      ? 'text-accent'
-                      : 'text-text-muted hover:text-text'
-                  }`}
-                >
-                  {link.label}
-                  {isActive && (
-                    <span className="ml-1 inline-block animate-blink text-accent">
-                      ▌
-                    </span>
-                  )}
-                </Link>
-              );
-            })}
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm text-text-muted transition-colors hover:text-text"
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
 
-          {/* Mobile menu button */}
           <button
             className="md:hidden text-text-muted hover:text-accent transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -97,11 +75,9 @@ export default function Navigation() {
         </div>
       </nav>
 
-      {/* Mobile overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               className="fixed inset-0 z-40 bg-background/80 backdrop-blur-sm md:hidden"
               initial={{ opacity: 0 }}
@@ -109,7 +85,6 @@ export default function Navigation() {
               exit={{ opacity: 0 }}
               onClick={() => setMobileOpen(false)}
             />
-            {/* Panel */}
             <motion.div
               role="dialog"
               aria-modal="true"
@@ -118,26 +93,26 @@ export default function Navigation() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.2, ease: 'easeOut' }}
+              transition={{ duration: 0.15, ease: 'easeOut' }}
             >
               <div className="flex flex-col gap-4">
-                {[{ href: '/', label: '~/' }, ...navLinks].map((link) => {
-                  const isActive = pathname === link.href;
-                  return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setMobileOpen(false)}
-                      className={`text-sm py-2 transition-colors ${
-                        isActive
-                          ? 'text-accent'
-                          : 'text-text-muted hover:text-text'
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  );
-                })}
+                <Link
+                  href="/"
+                  onClick={() => setMobileOpen(false)}
+                  className="py-2 text-sm text-text-muted transition-colors hover:text-text"
+                >
+                  Home
+                </Link>
+                {navLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="py-2 text-sm text-text-muted transition-colors hover:text-text"
+                  >
+                    {link.label}
+                  </a>
+                ))}
               </div>
             </motion.div>
           </>

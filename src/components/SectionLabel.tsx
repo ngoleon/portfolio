@@ -4,7 +4,7 @@ interface SectionLabelProps {
 
 export default function SectionLabel({ children }: SectionLabelProps) {
   return (
-    <p className="mb-6 text-xs tracking-[0.02em] text-text-dim">
+    <p className="mb-8 font-mono text-xs tracking-widest text-text-dim uppercase">
       {children}
     </p>
   );

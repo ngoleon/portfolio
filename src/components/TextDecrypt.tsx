@@ -15,7 +15,7 @@ interface TextDecryptProps {
 export default function TextDecrypt({
   text,
   className,
-  duration = 1500,
+  duration = 600,
 }: TextDecryptProps) {
   const prefersReducedMotion = useReducedMotion();
   const [displayed, setDisplayed] = useState(text);
@@ -29,7 +29,7 @@ export default function TextDecrypt({
     setDisplayed('');
 
     const totalChars = text.length;
-    const cyclesPerChar = 4; // 3-5 random chars before settling
+    const cyclesPerChar = 2;
     const totalFrames = totalChars * cyclesPerChar;
     const frameInterval = duration / totalFrames;
     let frame = 0;

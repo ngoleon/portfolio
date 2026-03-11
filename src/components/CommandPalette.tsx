@@ -1,14 +1,14 @@
 'use client';
 
 import { useEffect, useState, useCallback, useRef } from 'react';
-import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 
 const routes = [
-  { href: '/', label: '~/' },
-  { href: '/projects', label: './projects' },
-  { href: '/about', label: './about' },
-  { href: '/contact', label: './contact' },
+  { href: '#', label: 'Home' },
+  { href: '#about', label: 'About' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#contact', label: 'Contact' },
 ];
 
 export default function CommandPalette() {
@@ -16,7 +16,6 @@ export default function CommandPalette() {
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
-  const router = useRouter();
 
   const filtered = routes.filter((r) =>
     r.label.toLowerCase().includes(query.toLowerCase())
@@ -27,9 +26,13 @@ export default function CommandPalette() {
       setOpen(false);
       setQuery('');
       setSelectedIndex(0);
-      router.push(href);
+      if (href === '#') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+      }
     },
-    [router]
+    []
   );
 
   // Open/close with Cmd+K / Ctrl+K
@@ -100,7 +103,7 @@ export default function CommandPalette() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
           >
             <input
               ref={inputRef}
