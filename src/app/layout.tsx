@@ -13,6 +13,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://leon.dev'),
   title: {
     default: 'Leon Ngo — Software Engineer',
     template: '%s — Leon Ngo',
