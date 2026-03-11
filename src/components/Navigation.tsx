@@ -46,7 +46,7 @@ export default function Navigation() {
           </div>
 
           <button
-            className="md:hidden text-text-muted hover:text-accent transition-colors"
+            className="flex h-10 w-10 items-center justify-center rounded-lg md:hidden text-text-muted hover:text-accent transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           >
@@ -108,7 +108,7 @@ export default function Navigation() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="py-2 text-sm text-text-muted transition-colors hover:text-text"
+                    className="py-3 text-sm text-text-muted transition-colors hover:text-text"
                   >
                     {link.label}
                   </a>

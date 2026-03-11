@@ -30,7 +30,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${project.name} GitHub repository`}
-            className="text-xs text-text-dim transition-colors hover:text-accent"
+            className="py-2 text-xs text-text-dim transition-colors hover:text-accent"
           >
             GitHub →
           </a>
@@ -41,7 +41,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${project.name} live site`}
-            className="text-xs text-text-dim transition-colors hover:text-accent"
+            className="py-2 text-xs text-text-dim transition-colors hover:text-accent"
           >
             Live →
           </a>

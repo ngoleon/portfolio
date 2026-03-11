@@ -22,6 +22,8 @@ export default function ParticleBackground() {
     }).then(() => setEngineReady(true)).catch(() => {});
   }, []);
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
   if (prefersReducedMotion || !engineReady) return null;
 
   return (
@@ -30,9 +32,9 @@ export default function ParticleBackground() {
       className="!fixed !inset-0 !-z-10"
       options={{
         fullScreen: false,
-        fpsLimit: 60,
+        fpsLimit: isMobile ? 30 : 60,
         particles: {
-          number: { value: 60 },
+          number: { value: isMobile ? 25 : 60 },
           color: { value: '#34d399' },
           opacity: { value: 0.35 },
           size: { value: { min: 1, max: 2.5 } },

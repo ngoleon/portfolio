@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative flex min-h-screen flex-col justify-center px-6">
+      <section className="relative flex min-h-dvh flex-col justify-center px-6">
         <div className="mx-auto w-full max-w-5xl">
           <ScrollReveal>
             <h1 className="mb-4 font-heading text-[clamp(2.5rem,8vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.03em] text-text">
@@ -61,7 +61,7 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section id="about" className="px-6 py-24">
+      <section id="about" className="px-6 py-16 md:py-24">
         <div className="mx-auto max-w-5xl">
           <ScrollReveal>
             <SectionLabel>About</SectionLabel>
@@ -80,8 +80,8 @@ export default function Home() {
               <ScrollReveal delay={0.05}>
                 <div className="space-y-4">
                   {Object.entries(skills).map(([category, items]) => (
-                    <div key={category} className="flex flex-wrap items-center gap-2">
-                      <span className="w-20 shrink-0 font-mono text-xs uppercase tracking-wider text-text-dim">
+                    <div key={category} className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
+                      <span className="shrink-0 font-mono text-xs uppercase tracking-wider text-text-dim sm:w-20">
                         {category}
                       </span>
                       <div className="flex flex-wrap gap-2">
@@ -107,7 +107,7 @@ export default function Home() {
       </section>
 
       {/* Experience */}
-      <section id="experience" className="px-6 py-24">
+      <section id="experience" className="px-6 py-16 md:py-24">
         <div className="mx-auto max-w-5xl">
           <ScrollReveal>
             <SectionLabel>Experience</SectionLabel>
@@ -123,7 +123,7 @@ export default function Home() {
       </section>
 
       {/* Projects */}
-      <section id="projects" className="px-6 py-24">
+      <section id="projects" className="px-6 py-16 md:py-24">
         <div className="mx-auto max-w-5xl">
           <ScrollReveal>
             <SectionLabel>Projects</SectionLabel>
@@ -143,7 +143,7 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="px-6 py-24">
+      <section id="contact" className="px-6 py-16 md:py-24">
         <div className="mx-auto max-w-5xl">
           <ScrollReveal>
             <SectionLabel>Contact</SectionLabel>
@@ -169,14 +169,14 @@ export default function Home() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-text-muted transition-colors hover:text-accent"
+                  className="py-2 text-sm text-text-muted transition-colors hover:text-accent"
                 >
                   {link.name} →
                 </a>
               ))}
               <a
                 href="#"
-                className="rounded-lg border border-border bg-surface px-5 py-2.5 text-sm text-text-muted transition-[border-color,box-shadow,color] hover:border-accent/40 hover:text-accent hover:shadow-glow-sm"
+                className="rounded-lg border border-border bg-surface px-6 py-3 text-sm text-text-muted transition-[border-color,box-shadow,color] hover:border-accent/40 hover:text-accent hover:shadow-glow-sm"
               >
                 Download Resume
               </a>

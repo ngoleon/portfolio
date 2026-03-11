@@ -7,7 +7,7 @@ interface ExperienceCardProps {
 export default function ExperienceCard({ experience }: ExperienceCardProps) {
   return (
     <article className="group rounded-lg border border-border bg-surface p-5 transition-[border-color,box-shadow] duration-150 hover:border-accent/30 hover:shadow-glow-sm">
-      <div className="mb-1 flex items-baseline justify-between gap-4">
+      <div className="mb-1 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <h3 className="font-heading text-base font-semibold text-text">
           {experience.company}
         </h3>
