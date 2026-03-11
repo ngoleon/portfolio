@@ -34,7 +34,7 @@ export default function ParticleBackground() {
         particles: {
           number: { value: 60 },
           color: { value: '#34d399' },
-          opacity: { value: 0.15 },
+          opacity: { value: 0.35 },
           size: { value: { min: 1, max: 2.5 } },
           move: {
             enable: true,
@@ -43,7 +43,7 @@ export default function ParticleBackground() {
           links: {
             enable: true,
             color: '#34d399',
-            opacity: 0.06,
+            opacity: 0.15,
             distance: 150,
           },
         },
