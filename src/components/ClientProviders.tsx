@@ -2,8 +2,8 @@
 
 import dynamic from 'next/dynamic';
 
-const CursorGradient = dynamic(
-  () => import('@/components/CursorGradient'),
+const ParticleBackground = dynamic(
+  () => import('@/components/ParticleBackground'),
   { ssr: false }
 );
 
@@ -15,7 +15,7 @@ const CommandPalette = dynamic(
 export default function ClientProviders() {
   return (
     <>
-      <CursorGradient />
+      <ParticleBackground />
       <CommandPalette />
     </>
   );
