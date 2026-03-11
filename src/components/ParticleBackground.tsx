@@ -19,7 +19,7 @@ export default function ParticleBackground() {
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
-    }).then(() => setEngineReady(true));
+    }).then(() => setEngineReady(true)).catch(() => {});
   }, []);
 
   if (prefersReducedMotion || !engineReady) return null;

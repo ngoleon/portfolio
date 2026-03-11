@@ -56,6 +56,8 @@ export default function CommandPalette() {
     }
   }, [open]);
 
+  const clampedIndex = Math.min(selectedIndex, Math.max(filtered.length - 1, 0));
+
   // Keyboard navigation within palette
   const handleInputKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'ArrowDown') {
@@ -64,8 +66,8 @@ export default function CommandPalette() {
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       setSelectedIndex((i) => Math.max(i - 1, 0));
-    } else if (e.key === 'Enter' && filtered[selectedIndex]) {
-      navigate(filtered[selectedIndex].href);
+    } else if (e.key === 'Enter' && filtered[clampedIndex]) {
+      navigate(filtered[clampedIndex].href);
     }
   };
 
@@ -91,6 +93,9 @@ export default function CommandPalette() {
           />
           {/* Panel */}
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Command palette"
             className="fixed inset-x-4 top-[20vh] z-[61] mx-auto max-w-md overflow-hidden rounded-lg border border-border bg-surface shadow-glow-md"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -100,19 +105,23 @@ export default function CommandPalette() {
             <input
               ref={inputRef}
               type="text"
+              role="combobox"
+              aria-expanded={true}
+              aria-controls="command-palette-listbox"
+              aria-activedescendant={filtered[clampedIndex] ? `cp-item-${clampedIndex}` : undefined}
               placeholder="Navigate to..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={handleInputKeyDown}
               className="w-full border-b border-border bg-transparent px-4 py-3 text-sm text-text placeholder:text-text-dim outline-hidden"
             />
-            <ul className="py-2">
+            <ul id="command-palette-listbox" role="listbox" className="py-2">
               {filtered.map((route, i) => (
-                <li key={route.href}>
+                <li key={route.href} id={`cp-item-${i}`} role="option" aria-selected={i === clampedIndex}>
                   <button
                     onClick={() => navigate(route.href)}
                     className={`w-full px-4 py-2 text-left text-sm transition-colors ${
-                      i === selectedIndex
+                      i === clampedIndex
                         ? 'bg-surface-bright text-accent'
                         : 'text-text-muted hover:text-text'
                     }`}

@@ -1,16 +1,24 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function CursorGradient() {
   const ref = useRef<HTMLDivElement>(null);
+  const [hasHover, setHasHover] = useState(false);
 
   useEffect(() => {
+    const mq = window.matchMedia('(hover: hover)');
+    setHasHover(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setHasHover(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  useEffect(() => {
+    if (!hasHover) return;
+
     const el = ref.current;
     if (!el) return;
-
-    // Disable on touch devices
-    if (window.matchMedia('(hover: none)').matches) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       el.style.setProperty('--mouse-x', `${e.clientX}px`);
@@ -19,7 +27,7 @@ export default function CursorGradient() {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [hasHover]);
 
   return (
     <div

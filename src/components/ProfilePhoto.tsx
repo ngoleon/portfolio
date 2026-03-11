@@ -23,6 +23,7 @@ export default function ProfilePhoto() {
           src="/images/profile.jpg"
           alt="Leon Ngo"
           fill
+          sizes="256px"
           className="object-cover transition-[filter] duration-300 group-hover:[filter:sepia(0.2)_hue-rotate(120deg)_saturate(1.2)]"
           unoptimized
           onError={() => setImgError(true)}

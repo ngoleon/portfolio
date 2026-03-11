@@ -24,9 +24,14 @@ export default function Navigation() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
   return (
     <>
-      <nav className="fixed top-0 z-50 w-full border-b border-border bg-surface/80 backdrop-blur-lg">
+      <nav aria-label="Main navigation" className="fixed top-0 z-50 w-full border-b border-border bg-surface/80 backdrop-blur-lg">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
           {/* Home link */}
           <Link
@@ -106,6 +111,9 @@ export default function Navigation() {
             />
             {/* Panel */}
             <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-label="Navigation menu"
               className="fixed inset-x-4 top-20 z-50 mx-auto max-w-sm rounded-lg border border-border bg-surface p-6 shadow-glow-md md:hidden"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}

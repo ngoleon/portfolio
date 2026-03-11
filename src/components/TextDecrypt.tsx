@@ -18,13 +18,15 @@ export default function TextDecrypt({
   duration = 1500,
 }: TextDecryptProps) {
   const prefersReducedMotion = useReducedMotion();
-  const [displayed, setDisplayed] = useState(prefersReducedMotion ? text : '');
+  const [displayed, setDisplayed] = useState(text);
 
   useEffect(() => {
     if (prefersReducedMotion) {
       setDisplayed(text);
       return;
     }
+
+    setDisplayed('');
 
     const totalChars = text.length;
     const cyclesPerChar = 4; // 3-5 random chars before settling
