@@ -32,10 +32,10 @@ export default function CursorGradient() {
   return (
     <div
       ref={ref}
-      className="pointer-events-none fixed inset-0 -z-10"
+      className="pointer-events-none fixed inset-0 z-0"
       style={{
         background:
-          'radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), oklch(from #34d399 l c h / 0.03), transparent)',
+          'radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), oklch(from #34d399 l c h / 0.07), transparent)',
       }}
     />
   );
