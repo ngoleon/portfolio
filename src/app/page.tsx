@@ -16,7 +16,7 @@ const skills = {
 
 const socialLinks = [
   { href: 'https://github.com/ngoleon', name: 'GitHub' },
-  { href: 'https://linkedin.com/in/ngoleon', name: 'LinkedIn' },
+  { href: 'https://www.linkedin.com/in/ngo-leon/', name: 'LinkedIn' },
 ];
 
 export default function Home() {
@@ -33,14 +33,14 @@ export default function Home() {
           <ScrollReveal delay={0.05}>
             <div className="mb-6 text-[clamp(1rem,3vw,1.5rem)]">
               <TextDecrypt
-                text="Software Developer"
+                text="Software Engineer"
                 className="font-medium text-accent"
                 duration={600}
               />
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <p className="max-w-[55ch] text-base leading-relaxed text-text-muted">
+            <p className="max-w-[55ch] text-base leading-relaxed text-text-muted lg:text-lg">
               Cloud-native microservices, platform engineering, and AI-assisted developer tooling — from .NET backends on Azure to embedded Linux systems.
             </p>
           </ScrollReveal>
@@ -63,32 +63,31 @@ export default function Home() {
       {/* About */}
       <section id="about" className="px-6 py-16 md:py-24">
         <div className="mx-auto max-w-5xl">
+          <ScrollReveal className="mb-8 flex justify-center lg:hidden">
+            <ProfilePhoto />
+          </ScrollReveal>
           <ScrollReveal>
             <SectionLabel>About</SectionLabel>
           </ScrollReveal>
           <div className="grid gap-12 lg:grid-cols-[1fr_auto]">
             <div>
               <ScrollReveal>
-                <p className="mb-10 max-w-[55ch] text-base leading-[1.75] text-text-muted">
-                  Software developer with experience across enterprise cloud-native microservices,
-                  platform engineering, and full-stack development. Currently building .NET 10
-                  microservice platforms on Azure with Kubernetes, designing infrastructure-as-code
-                  with Terragrunt, and developing AI-assisted developer tooling. Background spans
-                  embedded systems, serverless backends, and community-facing product development.
+                <p className="mb-10 text-base leading-[1.75] text-text-muted lg:text-lg">
+                  Software engineer specialising in distributed systems, cloud-native platforms, and developer tooling. I currently build .NET 10 microservice systems on Azure with Kubernetes, design infrastructure-as-code using Terragrunt, and develop AI-assisted tools to improve developer productivity. My background spans embedded Linux development, serverless backend architecture, and building full-stack platforms used by active online communities. I enjoy building reliable systems, exploring low-level runtime tooling, and designing platforms that help other developers move faster.
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={0.05}>
                 <div className="space-y-4">
                   {Object.entries(skills).map(([category, items]) => (
                     <div key={category} className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
-                      <span className="shrink-0 font-mono text-xs uppercase tracking-wider text-text-dim sm:w-20">
+                      <span className="shrink-0 font-mono text-sm uppercase tracking-wider text-text-dim sm:w-24">
                         {category}
                       </span>
                       <div className="flex flex-wrap gap-2">
                         {items.map((item) => (
                           <span
                             key={item}
-                            className="rounded-full bg-surface-bright px-3 py-1 text-xs text-text-muted"
+                            className="rounded-full bg-surface-bright px-3 py-1 text-sm text-text-muted"
                           >
                             {item}
                           </span>
@@ -99,7 +98,7 @@ export default function Home() {
                 </div>
               </ScrollReveal>
             </div>
-            <ScrollReveal delay={0.1} className="flex justify-center lg:justify-end">
+            <ScrollReveal delay={0.1} className="hidden lg:flex lg:justify-end">
               <ProfilePhoto />
             </ScrollReveal>
           </div>
@@ -149,14 +148,14 @@ export default function Home() {
             <SectionLabel>Contact</SectionLabel>
           </ScrollReveal>
           <ScrollReveal delay={0.05}>
-            <p className="mb-6 text-lg text-text">
+            <p className="mb-6 text-xl text-text">
               Interested in working together?
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <a
               href="mailto:ngo.leon@gmail.com"
-              className="mb-8 inline-block text-lg text-accent transition-shadow hover:shadow-glow-sm"
+              className="mb-8 inline-block text-xl text-accent transition-shadow hover:shadow-glow-sm"
             >
               ngo.leon@gmail.com
             </a>
@@ -169,14 +168,14 @@ export default function Home() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="py-2 text-sm text-text-muted transition-colors hover:text-accent"
+                  className="py-2 text-base text-text-muted transition-colors hover:text-accent"
                 >
                   {link.name} →
                 </a>
               ))}
               <a
                 href="#"
-                className="rounded-lg border border-border bg-surface px-6 py-3 text-sm text-text-muted transition-[border-color,box-shadow,color] hover:border-accent/40 hover:text-accent hover:shadow-glow-sm"
+                className="rounded-lg border border-border bg-surface px-6 py-3 text-base text-text-muted transition-[border-color,box-shadow,color] hover:border-accent/40 hover:text-accent hover:shadow-glow-sm"
               >
                 Download Resume
               </a>

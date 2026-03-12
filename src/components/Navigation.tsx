@@ -28,7 +28,7 @@ export default function Navigation() {
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-3">
           <Link
             href="/"
-            className="font-heading text-sm font-semibold text-text transition-colors hover:text-accent"
+            className="font-heading text-base font-semibold text-text transition-colors hover:text-accent"
           >
             Leon Ngo
           </Link>
@@ -38,7 +38,7 @@ export default function Navigation() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-text-muted transition-colors hover:text-text"
+                className="text-base text-text-muted transition-colors hover:text-text"
               >
                 {link.label}
               </a>
@@ -99,7 +99,7 @@ export default function Navigation() {
                 <Link
                   href="/"
                   onClick={() => setMobileOpen(false)}
-                  className="py-2 text-sm text-text-muted transition-colors hover:text-text"
+                  className="py-2 text-base text-text-muted transition-colors hover:text-text"
                 >
                   Home
                 </Link>
@@ -108,7 +108,7 @@ export default function Navigation() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="py-3 text-sm text-text-muted transition-colors hover:text-text"
+                    className="py-3 text-base text-text-muted transition-colors hover:text-text"
                   >
                     {link.label}
                   </a>

@@ -11,17 +11,23 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 'lixi-das-platform',
-    name: 'LIXI DAS Microservice Platform',
+    name: 'Lextech - LIXI DAS Microservice Platform',
     description: 'Cloud-native microservice platform processing mortgage instructions on Azure. Includes payload ingestion, schema validation across 286 definitions, domain event publishing, and GitOps deployment with ArgoCD blue-green rollouts.',
     techStack: ['.NET 10', 'Azure', 'AKS', 'Service Bus', 'Terragrunt', 'ArgoCD'],
     featured: true,
   },
+    {
+    id: 'ai-legacy-refactor',
+    name: 'Lextech - Legacy Platform Refactor',
+    description: 'I engineered an AI-assisted development workflow to refactor the legacy Lextech platform, delivering 2.08\u00d7 faster average response times and a 1.69\u00d7 improvement in P99 latency, significantly improving system responsiveness and eliminating major production latency spikes.',
+    techStack: ['AI Agents', '.NET', 'Azure', 'Performance Engineering'],
+    featured: true,
+  },
   {
     id: 'mcp-dev-tooling',
-    name: 'AI Developer Tooling (MCP)',
+    name: 'Lextech - AI Developer Tooling (MCP)',
     description: 'Model Context Protocol server with 10 schema navigation tools, 4 autonomous code review agents, and 13 domain-specific development guides to enforce architecture standards and accelerate feature delivery.',
     techStack: ['MCP', 'TypeScript', 'AI Agents', 'Code Review'],
-    githubUrl: 'https://github.com/ngoleon',
     featured: true,
   },
   {

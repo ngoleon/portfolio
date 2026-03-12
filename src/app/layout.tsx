@@ -27,7 +27,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://leon.dev'),
   title: {
-    default: 'Leon Ngo — Software Developer',
+    default: 'Leon Ngo — Software Engineer',
     template: '%s — Leon Ngo',
   },
   description: 'Software developer building cloud-native microservices, platform infrastructure, and AI-assisted developer tooling.',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   openGraph: {
-    title: 'Leon Ngo — Software Developer',
+    title: 'Leon Ngo — Software Engineer',
     description: 'Software developer building cloud-native microservices, platform infrastructure, and AI-assisted developer tooling.',
     url: 'https://leon.dev',
     siteName: 'Leon Ngo',
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Leon Ngo — Software Developer',
+    title: 'Leon Ngo — Software Engineer',
     description: 'Software developer building cloud-native microservices, platform infrastructure, and AI-assisted developer tooling.',
   },
   robots: {
