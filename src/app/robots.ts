@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://leon.dev/sitemap.xml',
+    sitemap: 'https://ngoleon.com/sitemap.xml',
   };
 }

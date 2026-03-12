@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 
 export const dynamic = 'force-static';
 
-const BASE_URL = 'https://leon.dev'; // Update when domain is purchased
+const BASE_URL = 'https://ngoleon.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

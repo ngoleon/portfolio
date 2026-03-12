@@ -25,7 +25,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://leon.dev'),
+  metadataBase: new URL('https://ngoleon.com'),
   title: {
     default: 'Leon Ngo — Software Engineer',
     template: '%s — Leon Ngo',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Leon Ngo — Software Engineer',
     description: 'Software developer building cloud-native microservices, platform infrastructure, and AI-assisted developer tooling.',
-    url: 'https://leon.dev',
+    url: 'https://ngoleon.com',
     siteName: 'Leon Ngo',
     locale: 'en_US',
     type: 'website',
