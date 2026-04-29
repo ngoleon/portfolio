@@ -2,7 +2,7 @@
 
 import ScrollReveal from '@/components/ScrollReveal';
 import ProjectCardP5 from '@/components/ui/ProjectCardP5';
-import ExperienceCard from '@/components/ExperienceCard';
+import ExperienceCardP5 from '@/components/ui/ExperienceCardP5';
 import { projects } from '@/data/projects';
 import { experience } from '@/data/experience';
 import SectionLabel from '@/components/ui/SectionLabel';
@@ -170,15 +170,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Experience */}
-      <section id="experience" className="px-6 py-16 md:py-24">
-        <div className="mx-auto max-w-5xl">
-          {/* SectionLabel placeholder — rebuilt in Phase 6 */}
-          <div className="space-y-4">
-            {experience.map((exp, i) => (
-              <ScrollReveal key={exp.company} delay={i * 0.05}>
-                <ExperienceCard experience={exp} />
-              </ScrollReveal>
+      {/* === EXPERIENCE === */}
+      <section id="experience" className="relative overflow-hidden px-6 py-24 sm:py-32">
+        <HalftoneField density="subtle" />
+        <div className="relative mx-auto max-w-6xl z-[2]">
+          <SectionLabel number="04" label="Experience" />
+          <h2
+            className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
+            style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', transform: 'skewX(var(--skew-x))' }}
+          >
+            Field <span className="text-[var(--color-accent)]">log.</span>
+          </h2>
+          <div className="mt-10 space-y-6">
+            {experience.map((exp) => (
+              <ExperienceCardP5 key={exp.company} experience={exp} />
             ))}
           </div>
         </div>
