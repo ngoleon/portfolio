@@ -213,44 +213,56 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="px-6 py-16 md:py-24">
-        <div className="mx-auto max-w-5xl">
-          {/* SectionLabel placeholder — rebuilt in Phase 6 */}
-          <ScrollReveal delay={0.05}>
-            <p className="mb-6 text-xl text-text">
-              Interested in working together?
-            </p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.1}>
+      {/* === CONTACT === */}
+      <section id="contact" className="relative overflow-hidden px-6 py-24 sm:py-32">
+        <HalftoneField density="medium" />
+        <div className="relative mx-auto max-w-5xl z-[2]">
+          <SectionLabel number="05" label="Contact" />
+          <h2
+            className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
+            style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)', transform: 'skewX(var(--skew-x))' }}
+          >
+            Interested in <span className="text-[var(--color-accent)]">working</span><br/> together<span className="text-[var(--color-accent)]">?</span>
+          </h2>
+
+          <div className="mt-10">
             <a
               href="mailto:ngo.leon@gmail.com"
-              className="mb-8 inline-block text-xl text-accent transition-shadow hover:shadow-glow-sm"
+              className="inline-block font-display italic font-black text-[var(--color-accent)] transition-transform duration-200 ease-[var(--ease-snap)] hover:scale-[1.04]"
+              style={{ fontSize: 'clamp(1.25rem, 2.5vw, 2rem)', textShadow: 'var(--shadow-text-sm)' }}
             >
-              ngo.leon@gmail.com
+              ngo.leon@gmail.com ↗
             </a>
-          </ScrollReveal>
-          <ScrollReveal delay={0.15}>
-            <div className="flex flex-wrap items-center gap-6">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="py-2 text-base text-text-muted transition-colors hover:text-accent"
-                >
-                  {link.name} →
-                </a>
-              ))}
+          </div>
+
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            {socialLinks.map((link) => (
               <a
-                href="#"
-                className="rounded-lg border border-border bg-surface px-6 py-3 text-base text-text-muted transition-[border-color,box-shadow,color] hover:border-accent/40 hover:text-accent hover:shadow-glow-sm"
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[var(--color-ink)] text-[var(--color-bg)] px-4 py-2.5 font-mono text-[0.75rem] uppercase tracking-[0.15em] transition-transform duration-200 ease-[var(--ease-snap)] hover:scale-105"
+                style={{ transform: 'skewX(var(--skew-x))' }}
               >
-                Download Resume
+                <span style={{ display: 'inline-block', transform: 'skewX(calc(-1 * var(--skew-x)))' }}>
+                  {link.name} ↗
+                </span>
               </a>
-            </div>
-          </ScrollReveal>
+            ))}
+            <a
+              href="/resume.pdf"
+              className="border-[3px] border-[var(--color-ink)] bg-[var(--color-bg)] px-5 py-2.5 font-mono text-[0.75rem] uppercase tracking-[0.15em] transition-transform duration-200 ease-[var(--ease-snap)] hover:scale-105"
+              style={{
+                transform: 'skewX(var(--skew-x))',
+                boxShadow: 'var(--shadow-card-sm)',
+              }}
+            >
+              <span style={{ display: 'inline-block', transform: 'skewX(calc(-1 * var(--skew-x)))' }}>
+                ↓ Download Resume
+              </span>
+            </a>
+          </div>
         </div>
       </section>
     </>
