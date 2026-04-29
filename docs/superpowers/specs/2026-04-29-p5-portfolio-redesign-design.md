@@ -315,11 +315,40 @@ Stagger sequence: 0ms topbar → 100ms tarot → 200ms name → 400ms slash → 
 - Section enter animations: fade + slight up-translate as they enter viewport (Motion `whileInView`)
 - Per-character text reveals on display headings using Motion's `staggerChildren`
 
-### Hover
-- Tarot card: rotates `-3deg → 0deg`, shadow grows `8px → 12px`
-- Project cards: rotate `-1deg → 0deg`, shadow grows
-- Buttons / links: red glow shadow on focus
-- Bottom nav items: red underline slides in
+### Hover (the P5 "zoom" feel)
+
+P5's signature interactive feedback: elements **scale up slightly** + skew softens + shadow grows. Combined, it gives that distinctive "snap forward" feel you get when navigating P5 menus. Used everywhere interactive.
+
+```css
+/* Universal hover transition */
+transition:
+  transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1.05),
+  box-shadow 180ms ease-out;
+```
+
+The slight overshoot in the easing curve is what makes it feel snappy / P5 instead of soft.
+
+Per-component hover spec:
+
+| Element | Default | Hover / Focus |
+|---|---|---|
+| **Tarot card** | `rotate(-3deg)` + `8px 8px 0` shadow | `rotate(-1.5deg) scale(1.04)` + `12px 12px 0` shadow |
+| **Project cards** | `skewX(-7deg)` + `6px 6px 0` shadow | `skewX(-5deg) scale(1.03)` + `10px 10px 0` shadow |
+| **Stamp tags** | `rotate(-7deg)` | `rotate(-3deg) scale(1.08)` |
+| **Info card** | `skewX(-7deg)` + `6px 6px 0` shadow | `skewX(-7deg) scale(1.02)` + `10px 10px 0` shadow |
+| **Buttons / CTA** | flat | `scale(1.05)` + red glow shadow `0 0 24px rgba(232,32,42,0.5)` |
+| **Bottom nav items** | flat | `scale(1.06) translateY(-2px)` + red underline slides in left-to-right |
+| **Cmd+K palette items** | flat | `scale(1.02) translateX(4px)` + red bullet `▸` appears on left |
+| **Anchor links** | underline | `scale(1.04)` + red underline + `↗` arrow translates `2px 2px` |
+| **Theme toggle** | flat | `rotate(180deg) scale(1.1)` (the icon spins on toggle) |
+
+**Active / selected** state (e.g., current section in nav, selected command in palette):
+- Same scale as hover, plus persistent red color/border
+- Pulsing shadow animation (subtle, 2s loop) to indicate "live"
+
+**`prefers-reduced-motion`**: scale/translate disabled, only color and shadow changes apply.
+
+This pattern is also used by Lenis-driven scroll reveals — sections "snap forward" with a small scale animation as they enter the viewport (`opacity: 0 → 1`, `scale: 0.97 → 1`, `translateY: 16px → 0`) on the same easing curve.
 
 ### Out of scope (for v1)
 - All-Out Attack overlay
