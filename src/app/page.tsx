@@ -14,6 +14,7 @@ import InfoCard from '@/components/ui/InfoCard';
 import StampTag from '@/components/ui/StampTag';
 import Watermark from '@/components/ui/Watermark';
 import HalftoneField from '@/components/ui/HalftoneField';
+import ScrollReveal from '@/components/ScrollReveal';
 import { motion } from 'motion/react';
 
 const socialLinks = [
@@ -129,13 +130,15 @@ export default function Home() {
         <div className="relative mx-auto grid max-w-6xl gap-10 md:grid-cols-[1fr_320px] z-[2]">
           {/* Left: prose */}
           <div>
-            <SectionLabel number="02" label="About" />
-            <h2
-              className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
-              style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', transform: 'skewX(var(--skew-x))' }}
-            >
-              Phantom <span className="text-[var(--color-accent)]">engineer.</span>
-            </h2>
+            <ScrollReveal>
+              <SectionLabel number="02" label="About" />
+              <h2
+                className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
+                style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', transform: 'skewX(var(--skew-x))' }}
+              >
+                Phantom <span className="text-[var(--color-accent)]">engineer.</span>
+              </h2>
+            </ScrollReveal>
             <p className="mt-6 max-w-[55ch] text-base leading-[1.75] sm:text-lg">
               Software engineer specialising in distributed systems, cloud-native platforms, and developer tooling. Currently building .NET 10 microservice systems on Azure with Kubernetes, designing infrastructure-as-code with Terragrunt, and developing AI-assisted tools to improve developer productivity. Background spans embedded Linux, serverless backend architecture, and full-stack platforms used by active online communities.
             </p>
@@ -166,13 +169,15 @@ export default function Home() {
       <section id="experience" className="relative overflow-hidden px-6 py-24 sm:py-32">
         <HalftoneField density="subtle" />
         <div className="relative mx-auto max-w-6xl z-[2]">
-          <SectionLabel number="04" label="Experience" />
-          <h2
-            className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
-            style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', transform: 'skewX(var(--skew-x))' }}
-          >
-            Field <span className="text-[var(--color-accent)]">log.</span>
-          </h2>
+          <ScrollReveal>
+            <SectionLabel number="04" label="Experience" />
+            <h2
+              className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
+              style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', transform: 'skewX(var(--skew-x))' }}
+            >
+              Field <span className="text-[var(--color-accent)]">log.</span>
+            </h2>
+          </ScrollReveal>
           <div className="mt-10 space-y-6">
             {experience.map((exp) => (
               <ExperienceCardP5 key={exp.company} experience={exp} />
@@ -185,13 +190,15 @@ export default function Home() {
       <section id="projects" className="relative overflow-hidden px-6 py-24 sm:py-32">
         <HalftoneField density="subtle" />
         <div className="relative mx-auto max-w-6xl z-[2]">
-          <SectionLabel number="03" label="Work" />
-          <h2
-            className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
-            style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', transform: 'skewX(var(--skew-x))' }}
-          >
-            Selected <span className="text-[var(--color-accent)]">work.</span>
-          </h2>
+          <ScrollReveal>
+            <SectionLabel number="03" label="Work" />
+            <h2
+              className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
+              style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', transform: 'skewX(var(--skew-x))' }}
+            >
+              Selected <span className="text-[var(--color-accent)]">work.</span>
+            </h2>
+          </ScrollReveal>
           <div className="mt-12 grid gap-6 md:gap-8 md:grid-cols-2">
             {projects.map((project, i) => (
               <div
@@ -209,13 +216,15 @@ export default function Home() {
       <section id="contact" className="relative overflow-hidden px-6 py-24 sm:py-32">
         <HalftoneField density="medium" />
         <div className="relative mx-auto max-w-5xl z-[2]">
-          <SectionLabel number="05" label="Contact" />
-          <h2
-            className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
-            style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)', transform: 'skewX(var(--skew-x))' }}
-          >
-            Interested in <span className="text-[var(--color-accent)]">working</span><br/> together<span className="text-[var(--color-accent)]">?</span>
-          </h2>
+          <ScrollReveal>
+            <SectionLabel number="05" label="Contact" />
+            <h2
+              className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
+              style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)', transform: 'skewX(var(--skew-x))' }}
+            >
+              Interested in <span className="text-[var(--color-accent)]">working</span><br/> together<span className="text-[var(--color-accent)]">?</span>
+            </h2>
+          </ScrollReveal>
 
           <div className="mt-10">
             <a
