@@ -145,7 +145,7 @@ export default function Home() {
     }
     section[id='index'] > div[data-cluster] {
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       gap: 1.5rem;
     }
     section[id='index'] > div[data-cluster] > div,
@@ -160,7 +160,7 @@ export default function Home() {
       <section id="about" className="relative overflow-hidden px-6 py-24 sm:py-32">
         <HalftoneField density="subtle" />
         <div className="relative mx-auto grid max-w-6xl gap-10 md:grid-cols-[1fr_320px] z-[2]">
-          {/* Left: prose */}
+          {/* Prose (top-left on desktop, 1st on mobile) */}
           <div>
             <ScrollReveal>
               <SectionLabel number="02" label="About" />
@@ -174,26 +174,28 @@ export default function Home() {
             <p className="mt-6 max-w-[55ch] text-base leading-[1.75] sm:text-lg">
               Software engineer specialising in distributed systems, cloud-native platforms, and developer tooling. Currently building .NET 10 microservice systems on Azure with Kubernetes, designing infrastructure-as-code with Terragrunt, and developing AI-assisted tools to improve developer productivity. Background spans embedded Linux, serverless backend architecture, and full-stack platforms used by active online communities.
             </p>
-            <div className="mt-8 flex flex-wrap gap-2">
-              {['C# · JAVA · TYPESCRIPT', 'AZURE · AWS · K8S', '.NET 10 · SPRING · NODE', 'TERRAGRUNT · DOCKER'].map((tag) => (
-                <span
-                  key={tag}
-                  className="bg-[var(--color-ink)] text-[var(--color-bg)] px-3 py-1.5 font-mono text-[0.7rem]"
-                  style={{ transform: 'skewX(var(--skew-x))' }}
-                >
-                  <span style={{ display: 'inline-block', transform: 'skewX(calc(-1 * var(--skew-x)))' }}>{tag}</span>
-                </span>
-              ))}
-            </div>
           </div>
 
-          {/* Right: stat card */}
+          {/* Stat card (right on desktop, 2nd on mobile so it sits above the tags) */}
           <StatCard
             name="L. NGO"
             rank="04"
             role="// THE ENGINEER · CODENAME · ROOT"
             stats={stats}
           />
+
+          {/* Tech tags (under prose on desktop, last on mobile) */}
+          <div className="flex flex-wrap gap-2">
+            {['C# · JAVA · TYPESCRIPT', 'AZURE · AWS · K8S', '.NET 10 · SPRING · NODE', 'TERRAGRUNT · DOCKER'].map((tag) => (
+              <span
+                key={tag}
+                className="bg-[var(--color-ink)] text-[var(--color-bg)] px-3 py-1.5 font-mono text-[0.7rem]"
+                style={{ transform: 'skewX(var(--skew-x))' }}
+              >
+                <span style={{ display: 'inline-block', transform: 'skewX(calc(-1 * var(--skew-x)))' }}>{tag}</span>
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 

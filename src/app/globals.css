@@ -65,12 +65,18 @@ html {
   color: var(--color-ink);
   /* Prevent layout shift when theme switches */
   color-scheme: light dark;
+  /* Block horizontal scroll. Skewed cards + the slash banner
+     (which extends -5% / +105% past the viewport edges) push a
+     few px of overflow; clipping at the html level kills any
+     scrollbar that would otherwise appear on small screens. */
+  overflow-x: hidden;
 }
 
 body {
   background: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-body);
+  overflow-x: hidden;
 }
 
 ::selection {
