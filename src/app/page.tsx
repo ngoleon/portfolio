@@ -76,7 +76,7 @@ export default function Home() {
         <motion.div
           data-tarot
           className="absolute z-[6]"
-          style={{ top: '5.5rem', right: '2rem' }}
+          style={{ top: '7rem', right: '2rem' }}
           initial={{ opacity: 0, scale: 0.9, rotate: -8 }}
           animate={{ opacity: 1, scale: 1, rotate: -3 }}
           transition={{ duration: 0.3, ease: 'easeOut', delay: 0.1 }}
@@ -85,7 +85,7 @@ export default function Home() {
         </motion.div>
 
         {/* === Diagonal slash === */}
-        <DiagonalSlash top="22rem" height="clamp(60px, 10vw, 75px)" align="center">
+        <DiagonalSlash top="24rem" height="clamp(60px, 10vw, 75px)" align="center">
           DISTRIBUTED SYSTEMS{' '}
           <span className="text-[var(--color-accent)]">·</span> CLOUD{' '}
           <span className="text-[var(--color-accent)]">·</span> DEV TOOLS
