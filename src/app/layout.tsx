@@ -53,9 +53,24 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${jetbrainsMono.variable}`}
-      // suppressHydrationWarning is required because the ThemeProvider sets data-theme on <html> client-side
       suppressHydrationWarning
     >
+      <head>
+        {/* No-flash theme script: runs before React hydrates */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+          try {
+            const stored = localStorage.getItem('ln-theme');
+            const t = stored === 'light' || stored === 'dark'
+              ? stored
+              : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.dataset.theme = t;
+          } catch (e) {}
+        `,
+          }}
+        />
+      </head>
       <body className="min-h-dvh bg-bg text-ink antialiased">
         <ClientProviders />
         <main className="min-h-dvh">{children}</main>
