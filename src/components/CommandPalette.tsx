@@ -15,7 +15,14 @@ export default function CommandPalette() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [prevQuery, setPrevQuery] = useState(query);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Reset selection when query changes (React 19 "reset state during render" pattern)
+  if (query !== prevQuery) {
+    setPrevQuery(query);
+    setSelectedIndex(0);
+  }
 
   const filtered = routes.filter((r) =>
     r.label.toLowerCase().includes(query.toLowerCase())
@@ -74,18 +81,13 @@ export default function CommandPalette() {
     }
   };
 
-  // Reset selection when query changes
-  useEffect(() => {
-    setSelectedIndex(0);
-  }, [query]);
-
   return (
     <AnimatePresence>
       {open && (
         <>
           {/* Backdrop */}
           <motion.div
-            className="fixed inset-0 z-[60] bg-background/80 backdrop-blur-sm"
+            className="fixed inset-0 z-[60] bg-[var(--color-ink)]/70 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -99,7 +101,7 @@ export default function CommandPalette() {
             role="dialog"
             aria-modal="true"
             aria-label="Command palette"
-            className="fixed inset-x-4 top-[20vh] z-[61] mx-auto max-w-md overflow-hidden rounded-lg border border-border bg-surface shadow-glow-md"
+            className="fixed inset-x-4 top-[20vh] z-[61] mx-auto max-w-md overflow-hidden border-[3px] border-[var(--color-ink)] bg-[var(--color-bg)] shadow-[var(--shadow-card)]"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
@@ -116,25 +118,25 @@ export default function CommandPalette() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={handleInputKeyDown}
-              className="w-full border-b border-border bg-transparent px-4 py-3 text-sm text-text placeholder:text-text-dim outline-hidden"
+              className="w-full border-b-[3px] border-[var(--color-accent)] bg-transparent px-4 py-3 font-mono text-sm text-[var(--color-ink)] placeholder:text-[var(--color-ink)]/40 outline-hidden uppercase tracking-[0.05em]"
             />
             <ul id="command-palette-listbox" role="listbox" className="py-2">
               {filtered.map((route, i) => (
                 <li key={route.href} id={`cp-item-${i}`} role="option" aria-selected={i === clampedIndex}>
                   <button
                     onClick={() => navigate(route.href)}
-                    className={`w-full px-4 py-2 text-left text-sm transition-colors ${
+                    className={`w-full px-4 py-2 text-left font-mono text-[0.85rem] tracking-[0.02em] transition-colors ${
                       i === clampedIndex
-                        ? 'bg-surface-bright text-accent'
-                        : 'text-text-muted hover:text-text'
+                        ? 'bg-[var(--color-accent)] text-[var(--color-bg)]'
+                        : 'text-[var(--color-ink)]/85 hover:text-[var(--color-accent)]'
                     }`}
                   >
-                    {route.label}
+                    {i === clampedIndex && <span aria-hidden="true">▸ </span>}{route.label}
                   </button>
                 </li>
               ))}
               {filtered.length === 0 && (
-                <li className="px-4 py-2 text-sm text-text-dim">
+                <li className="px-4 py-2 text-sm text-[var(--color-ink)]/60">
                   No matches
                 </li>
               )}
