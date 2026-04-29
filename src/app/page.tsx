@@ -70,7 +70,7 @@ export default function Home() {
           data-tarot
           className="absolute z-[6]"
           style={{
-            top: 'clamp(4rem, 6vh, 5.5rem)',
+            top: 'clamp(7rem, 12vh, 9.5rem)',
             right: 'clamp(1rem, 4vw, 2.5rem)',
           }}
           initial={{ opacity: 0, scale: 0.9, rotate: -8 }}
@@ -81,7 +81,7 @@ export default function Home() {
         </motion.div>
 
         {/* === Diagonal slash === */}
-        <DiagonalSlash top="clamp(18rem, 36vh, 22rem)" height="clamp(60px, 10vw, 75px)" align="center">
+        <DiagonalSlash top="clamp(22rem, 44vh, 27rem)" height="clamp(60px, 10vw, 75px)" align="center">
           DISTRIBUTED SYSTEMS{' '}
           <span className="text-[var(--color-accent)]">·</span> CLOUD{' '}
           <span className="text-[var(--color-accent)]">·</span> DEV TOOLS
