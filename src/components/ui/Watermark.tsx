@@ -25,7 +25,7 @@ export default function Watermark({
       style={{
         fontSize: size,
         transform: 'skewX(var(--skew-x))',
-        opacity: 0.08,
+        opacity: 0.18,
       }}
     >
       {number}

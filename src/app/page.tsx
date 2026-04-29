@@ -47,7 +47,7 @@ export default function Home() {
         <div
           aria-hidden="true"
           className="pointer-events-none absolute bottom-0 left-0 right-0 h-1/2"
-          style={{ background: 'linear-gradient(0deg, color-mix(in oklab, var(--color-accent) 16%, transparent), transparent)' }}
+          style={{ background: 'linear-gradient(0deg, color-mix(in oklab, var(--color-accent) 32%, transparent), transparent)' }}
         />
 
         {/* === Name zone === */}
