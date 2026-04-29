@@ -2,6 +2,7 @@
 
 import { sections } from '@/data/sections';
 import { useActiveSection } from '@/hooks/useActiveSection';
+import ThemeToggle from './ThemeToggle';
 
 interface TopBarProps {
   /** Center text, e.g. "SYDNEY · 2026" */
@@ -28,6 +29,7 @@ export default function TopBar({ center = 'SYDNEY · 2026' }: TopBarProps) {
       <span className="hidden sm:inline">{center}</span>
       <span className="flex items-center gap-3">
         <span className="text-[var(--color-accent)]">[ {activeLabel} {current} / {total} ]</span>
+        <ThemeToggle />
       </span>
     </header>
   );

@@ -15,6 +15,7 @@ import StampTag from '@/components/ui/StampTag';
 import Watermark from '@/components/ui/Watermark';
 import HalftoneField from '@/components/ui/HalftoneField';
 import ScrollReveal from '@/components/ScrollReveal';
+import Link from 'next/link';
 import { motion } from 'motion/react';
 
 const socialLinks = [
@@ -38,7 +39,7 @@ export default function Home() {
         }}
       >
         {/* Background watermark numeral */}
-        <Watermark number="04" position="bl" />
+        <Watermark number="01" position="bl" />
 
         {/* Subtle halftone field over whole hero */}
         <HalftoneField density="subtle" />
@@ -81,7 +82,9 @@ export default function Home() {
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 0.3, ease: 'easeOut', delay: 0.1 }}
         >
-          <TarotCard />
+          <Link href="#about" aria-label="Skip to About section" className="block">
+            <TarotCard />
+          </Link>
         </motion.div>
 
         {/* === Diagonal slash === */}
@@ -103,16 +106,21 @@ export default function Home() {
           <InfoCard label="// CURRENT MISSION">
             .NET 10 microservices on Azure · K8s · IaC with Terragrunt · AI-assisted dev tooling
           </InfoCard>
-          <div style={{ transform: 'translateY(-3rem)' }}>
+          <Link
+            href="#projects"
+            aria-label="View selected projects"
+            style={{ transform: 'translateY(-3rem)' }}
+            className="inline-block"
+          >
             <StampTag text="ROOT ACCESS GRANTED" />
-          </div>
+          </Link>
         </motion.div>
 
         {/* Narrow / mobile (<1024px): convert hero from absolute composition
             to a stacked column. The absolute layout needs ~1024px of width
             for the tarot + slash + cluster to coexist without overlap. */}
         <style>{`
-  @media (max-width: 1599px) {
+  @media (max-width: 1279px) {
     section[id='index'] {
       min-height: auto !important;
       max-height: none !important;
@@ -140,7 +148,8 @@ export default function Home() {
       align-items: flex-start;
       gap: 1.5rem;
     }
-    section[id='index'] > div[data-cluster] > div {
+    section[id='index'] > div[data-cluster] > div,
+    section[id='index'] > div[data-cluster] > a {
       transform: none !important;
     }
   }

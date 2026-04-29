@@ -12,11 +12,13 @@
   --color-accent-deep:  #b9151e;     /* shadow red */
   --color-halftone:     #0a0606;     /* halftone dot color = ink */
 
-  /* Stamp panel — always cream with dark text, theme-independent.
-     Used for chrome (TopBar, BottomNav) and floating panels (slash
-     banner, mission card). Reads as a paper sticker on the dark page. */
-  --color-stamp-bg:     #f4eedc;
-  --color-stamp-fg:     #0a0606;
+  /* Stamp panel — always the OPPOSITE of the page background, so
+     the chrome (TopBar, BottomNav) and floating panels (slash banner,
+     mission card, tarot, ROOT ACCESS stamp) read as paper stickers
+     no matter the theme. Defaults are for light theme; the dark
+     override below flips them. */
+  --color-stamp-bg:     #0a0606;
+  --color-stamp-fg:     #f4eedc;
 
   /* Typography */
   --font-display: var(--font-inter), system-ui, sans-serif;   /* italic black weight, used skewed */
@@ -49,6 +51,9 @@
   --color-accent:       #e8202a;
   --color-accent-deep:  #ff3a44;
   --color-halftone:     #f4eedc;
+  /* Flip the stamp colors so they remain opposite of bg in dark theme */
+  --color-stamp-bg:     #f4eedc;
+  --color-stamp-fg:     #0a0606;
 }
 
 /* ================================================================
