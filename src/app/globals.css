@@ -27,7 +27,7 @@
   --skew-x:        -7deg;
   --skew-y:        -3deg;
   --rotate-stamp:  -7deg;
-  --rotate-tarot:  -1deg;
+  --rotate-tarot:  -3deg;
 
   /* Shadow system — hard solid offsets, never blur */
   --shadow-card:    8px 8px 0 var(--color-accent);

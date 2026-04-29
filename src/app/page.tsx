@@ -61,7 +61,7 @@ export default function Home() {
         >
           <SectionLabel number="01" label="Index" />
           <div className="mt-2.5">
-            <HeroName first="Leon" last="Ngo" punct="!" />
+            <HeroName first="LEON" last="NGO" punct="!" />
           </div>
           <p
             className="mt-8 font-mono tracking-[0.04em] opacity-85"
@@ -76,7 +76,7 @@ export default function Home() {
         <motion.div
           data-tarot
           className="absolute z-[6]"
-          style={{ top: '9rem', right: '4rem' }}
+          style={{ top: '11rem', right: '4rem' }}
           initial={{ opacity: 0, scale: 0.9, rotate: -4 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 0.3, ease: 'easeOut', delay: 0.1 }}
