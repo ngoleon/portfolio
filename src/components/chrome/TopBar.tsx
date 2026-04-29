@@ -1,14 +1,21 @@
+'use client';
+
+import { sections } from '@/data/sections';
+import { useActiveSection } from '@/hooks/useActiveSection';
+
 interface TopBarProps {
-  /** Section number/total to display, e.g. "01 / 04" */
-  indicator?: string;
   /** Center text, e.g. "SYDNEY · 2026" */
   center?: string;
 }
 
-export default function TopBar({
-  indicator = '01 / 04',
-  center = 'SYDNEY · 2026',
-}: TopBarProps) {
+export default function TopBar({ center = 'SYDNEY · 2026' }: TopBarProps) {
+  const ids = sections.map((s) => s.href.replace('#', ''));
+  const activeId = useActiveSection(ids);
+  const total = String(sections.length).padStart(2, '0');
+  const activeIdx = sections.findIndex((s) => s.href === `#${activeId}`);
+  const current = String((activeIdx >= 0 ? activeIdx : 0) + 1).padStart(2, '0');
+  const activeLabel = (sections[activeIdx >= 0 ? activeIdx : 0]?.label ?? 'Index').toUpperCase();
+
   return (
     <header
       role="banner"
@@ -20,7 +27,7 @@ export default function TopBar({
       </span>
       <span className="hidden sm:inline">{center}</span>
       <span className="flex items-center gap-3">
-        <span className="text-[var(--color-accent)]">[ INDEX {indicator} ]</span>
+        <span className="text-[var(--color-accent)]">[ {activeLabel} {current} / {total} ]</span>
       </span>
     </header>
   );

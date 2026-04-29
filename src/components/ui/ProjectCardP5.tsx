@@ -10,7 +10,7 @@ export default function ProjectCardP5({ project, index }: ProjectCardP5Props) {
   const numeral = String(index + 1).padStart(2, '0');
 
   return (
-    <article className="group relative overflow-hidden">
+    <article className="group relative">
       {/* Red shadow */}
       <div
         aria-hidden="true"
