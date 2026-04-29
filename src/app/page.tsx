@@ -70,7 +70,7 @@ export default function Home() {
           data-tarot
           className="absolute z-[6]"
           style={{
-            top: 'clamp(7rem, 12vh, 9.5rem)',
+            top: 'clamp(9rem, 16vh, 12rem)',
             right: 'clamp(1rem, 4vw, 2.5rem)',
           }}
           initial={{ opacity: 0, scale: 0.9, rotate: -8 }}
@@ -81,7 +81,7 @@ export default function Home() {
         </motion.div>
 
         {/* === Diagonal slash === */}
-        <DiagonalSlash top="clamp(22rem, 44vh, 27rem)" height="clamp(60px, 10vw, 75px)" align="center">
+        <DiagonalSlash top="clamp(26rem, 52vh, 32rem)" height="clamp(60px, 10vw, 75px)" align="center">
           DISTRIBUTED SYSTEMS{' '}
           <span className="text-[var(--color-accent)]">·</span> CLOUD{' '}
           <span className="text-[var(--color-accent)]">·</span> DEV TOOLS
@@ -91,7 +91,7 @@ export default function Home() {
         <motion.div
           data-cluster
           className="absolute z-[6] flex items-end gap-4 sm:gap-6"
-          style={{ left: 'clamp(1rem, 4vw, 2.5rem)', top: 'clamp(28rem, 56vh, 34rem)' }}
+          style={{ left: 'clamp(1rem, 4vw, 2.5rem)', top: 'clamp(32rem, 64vh, 40rem)' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.6 }}
