@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import ClientProviders from '@/components/ClientProviders';
-import ThemeProvider from '@/components/providers/ThemeProvider';
 import LenisProvider from '@/components/providers/LenisProvider';
 import TopBar from '@/components/chrome/TopBar';
 import BottomNav from '@/components/chrome/BottomNav';
@@ -56,34 +55,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-theme="dark"
       className={`${inter.variable} ${jetbrainsMono.variable}`}
-      suppressHydrationWarning
     >
-      <head>
-        {/* No-flash theme script: runs before React hydrates */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-          try {
-            const stored = localStorage.getItem('ln-theme');
-            const t = stored === 'light' || stored === 'dark'
-              ? stored
-              : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            document.documentElement.dataset.theme = t;
-          } catch (e) {}
-        `,
-          }}
-        />
-      </head>
       <body className="min-h-dvh bg-bg text-ink antialiased">
-        <ThemeProvider>
-          <LenisProvider>
-            <ClientProviders />
-            <TopBar />
-            <main className="min-h-dvh pt-12 pb-14">{children}</main>
-            <BottomNav />
-          </LenisProvider>
-        </ThemeProvider>
+        <LenisProvider>
+          <ClientProviders />
+          <TopBar />
+          <main className="min-h-dvh pt-12 pb-14">{children}</main>
+          <BottomNav />
+        </LenisProvider>
       </body>
     </html>
   );

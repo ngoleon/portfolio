@@ -9,7 +9,7 @@ export default function BottomNav() {
   return (
     <nav
       aria-label="Section navigation"
-      className="fixed bottom-0 left-0 right-0 z-50 flex items-center gap-4 sm:gap-7 border-t-[3px] border-[var(--color-accent)] bg-[var(--color-bg)] text-[var(--color-ink)] px-4 sm:px-8 py-2.5 sm:py-3 font-mono text-[0.65rem] sm:text-[0.75rem] tracking-[0.12em] uppercase"
+      className="fixed bottom-0 left-0 right-0 z-50 flex items-center gap-4 sm:gap-7 border-t-[3px] border-[var(--color-accent)] bg-[var(--color-stamp-bg)] text-[var(--color-stamp-fg)] px-4 sm:px-8 py-2.5 sm:py-3 font-mono text-[0.65rem] sm:text-[0.75rem] tracking-[0.12em] uppercase"
     >
       {sections.map((s, i) => (
         <Link
