@@ -28,6 +28,7 @@ export default function DiagonalSlash({
 
   return (
     <div
+      data-slash
       className={`absolute -left-[5%] -right-[5%] flex items-center bg-[var(--color-stamp-bg)] text-[var(--color-stamp-fg)] font-display italic font-black tracking-[0.04em] whitespace-nowrap overflow-hidden shadow-[var(--shadow-card)] ${justify} ${className}`}
       style={{
         top,

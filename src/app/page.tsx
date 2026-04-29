@@ -46,8 +46,9 @@ export default function Home() {
 
         {/* === Name zone === */}
         <motion.div
+          data-name
           className="absolute z-[5] max-w-[80%] md:max-w-[50%]"
-          style={{ top: '8%', left: 'clamp(1rem, 4vw, 2.5rem)' }}
+          style={{ top: '4rem', left: '2rem' }}
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.2 }}
@@ -69,10 +70,7 @@ export default function Home() {
         <motion.div
           data-tarot
           className="absolute z-[6]"
-          style={{
-            top: '15%',
-            right: 'clamp(1rem, 4vw, 2.5rem)',
-          }}
+          style={{ top: '5.5rem', right: '2rem' }}
           initial={{ opacity: 0, scale: 0.9, rotate: -8 }}
           animate={{ opacity: 1, scale: 1, rotate: -3 }}
           transition={{ duration: 0.3, ease: 'easeOut', delay: 0.1 }}
@@ -81,7 +79,7 @@ export default function Home() {
         </motion.div>
 
         {/* === Diagonal slash === */}
-        <DiagonalSlash top="48%" height="clamp(60px, 10vw, 75px)" align="center">
+        <DiagonalSlash top="22rem" height="clamp(60px, 10vw, 75px)" align="center">
           DISTRIBUTED SYSTEMS{' '}
           <span className="text-[var(--color-accent)]">·</span> CLOUD{' '}
           <span className="text-[var(--color-accent)]">·</span> DEV TOOLS
@@ -91,7 +89,7 @@ export default function Home() {
         <motion.div
           data-cluster
           className="absolute z-[6] flex items-end gap-4 sm:gap-6"
-          style={{ left: 'clamp(1rem, 4vw, 2.5rem)', top: '60%' }}
+          style={{ left: '2rem', top: '27rem' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.6 }}
@@ -103,22 +101,41 @@ export default function Home() {
             <StampTag text="ROOT ACCESS GRANTED" />
           </div>
         </motion.div>
-        {/* Mobile-only adjustments — desktop absolute layout still fires above clamp values, but at <768px we re-stack the tarot and cluster vertically */}
+
+        {/* Mobile (<768px): convert hero from absolute composition to a
+            stacked column. Each piece falls into normal flow, in source order.
+            Desktop (>=768px) keeps the rem-positioned absolute layout. */}
         <style>{`
   @media (max-width: 767px) {
+    section[id='index'] {
+      min-height: auto !important;
+      max-height: none !important;
+      padding: 1.5rem 1rem 2rem;
+    }
+    section[id='index'] > div[data-name],
+    section[id='index'] > div[data-tarot],
+    section[id='index'] > div[data-slash],
+    section[id='index'] > div[data-cluster] {
+      position: static !important;
+      top: auto !important;
+      left: auto !important;
+      right: auto !important;
+      bottom: auto !important;
+      max-width: 100%;
+      margin: 0 0 2rem;
+      transform: none !important;
+    }
     section[id='index'] > div[data-tarot] {
-      position: relative;
-      top: auto;
-      right: auto;
-      margin: 1rem auto 0;
-      display: block;
+      display: flex;
+      justify-content: center;
     }
     section[id='index'] > div[data-cluster] {
-      position: static;
       flex-direction: column;
       align-items: flex-start;
-      margin-top: 1rem;
-      padding: 0 1rem;
+      gap: 1.5rem;
+    }
+    section[id='index'] > div[data-cluster] > div {
+      transform: none !important;
     }
   }
 `}</style>
