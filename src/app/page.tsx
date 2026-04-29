@@ -6,6 +6,8 @@ import ExperienceCard from '@/components/ExperienceCard';
 import { projects } from '@/data/projects';
 import { experience } from '@/data/experience';
 import SectionLabel from '@/components/ui/SectionLabel';
+import StatCard from '@/components/ui/StatCard';
+import { stats } from '@/data/stats';
 import HeroName from '@/components/ui/HeroName';
 import TarotCard from '@/components/ui/TarotCard';
 import DiagonalSlash from '@/components/ui/DiagonalSlash';
@@ -129,40 +131,42 @@ export default function Home() {
 `}</style>
       </section>
 
-      {/* About */}
-      <section id="about" className="px-6 py-16 md:py-24">
-        <div className="mx-auto max-w-5xl">
-          {/* SectionLabel placeholder — rebuilt in Phase 6 */}
-          <div className="grid gap-12 lg:grid-cols-[1fr_auto]">
-            <div>
-              <ScrollReveal>
-                <p className="mb-10 text-base leading-[1.75] text-text-muted lg:text-lg">
-                  Software engineer specialising in distributed systems, cloud-native platforms, and developer tooling. I currently build .NET 10 microservice systems on Azure with Kubernetes, design infrastructure-as-code using Terragrunt, and develop AI-assisted tools to improve developer productivity. My background spans embedded Linux development, serverless backend architecture, and building full-stack platforms used by active online communities. I enjoy building reliable systems, exploring low-level runtime tooling, and designing platforms that help other developers move faster.
-                </p>
-              </ScrollReveal>
-              <ScrollReveal delay={0.05}>
-                <div className="space-y-4">
-                  {Object.entries(skills).map(([category, items]) => (
-                    <div key={category} className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
-                      <span className="shrink-0 font-mono text-sm uppercase tracking-wider text-text-dim sm:w-24">
-                        {category}
-                      </span>
-                      <div className="flex flex-wrap gap-2">
-                        {items.map((item) => (
-                          <span
-                            key={item}
-                            className="rounded-full bg-surface-bright px-3 py-1 text-sm text-text-muted"
-                          >
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </ScrollReveal>
+      {/* === ABOUT === */}
+      <section id="about" className="relative overflow-hidden px-6 py-24 sm:py-32">
+        <HalftoneField density="subtle" />
+        <div className="relative mx-auto grid max-w-6xl gap-10 md:grid-cols-[1fr_320px] z-[2]">
+          {/* Left: prose */}
+          <div>
+            <SectionLabel number="02" label="About" />
+            <h2
+              className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
+              style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', transform: 'skewX(var(--skew-x))' }}
+            >
+              Phantom <span className="text-[var(--color-accent)]">engineer.</span>
+            </h2>
+            <p className="mt-6 max-w-[55ch] text-base leading-[1.75] sm:text-lg">
+              Software engineer specialising in distributed systems, cloud-native platforms, and developer tooling. Currently building .NET 10 microservice systems on Azure with Kubernetes, designing infrastructure-as-code with Terragrunt, and developing AI-assisted tools to improve developer productivity. Background spans embedded Linux, serverless backend architecture, and full-stack platforms used by active online communities.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-2">
+              {['C# · JAVA · TYPESCRIPT', 'AZURE · AWS · K8S', '.NET 10 · SPRING · NODE', 'TERRAGRUNT · DOCKER'].map((tag) => (
+                <span
+                  key={tag}
+                  className="bg-[var(--color-ink)] text-[var(--color-bg)] px-3 py-1.5 font-mono text-[0.7rem]"
+                  style={{ transform: 'skewX(var(--skew-x))' }}
+                >
+                  <span style={{ display: 'inline-block', transform: 'skewX(calc(-1 * var(--skew-x)))' }}>{tag}</span>
+                </span>
+              ))}
             </div>
           </div>
+
+          {/* Right: stat card */}
+          <StatCard
+            name="L. NGO"
+            rank="04"
+            role="// THE ENGINEER · CODENAME · ROOT"
+            stats={stats}
+          />
         </div>
       </section>
 
