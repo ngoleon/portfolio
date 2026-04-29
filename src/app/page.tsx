@@ -29,7 +29,13 @@ export default function Home() {
       <section
         id="index"
         className="relative overflow-hidden"
-        style={{ minHeight: '100dvh', maxHeight: '900px' }}
+        style={{
+          // Always at least tall enough for the composition (36rem),
+          // grows up to 56rem on large screens. Page becomes
+          // scrollable when the viewport is shorter than 36rem.
+          minHeight: 'max(36rem, calc(100dvh - 6.5rem))',
+          maxHeight: '56rem',
+        }}
       >
         {/* Background watermark numeral */}
         <Watermark number="04" position="bl" />
