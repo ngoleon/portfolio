@@ -147,32 +147,6 @@ export default function Home() {
 `}</style>
       </section>
 
-      {/* === PROJECTS / WORK === */}
-      <section id="projects" className="relative px-6 py-24 sm:py-32">
-        <HalftoneField density="subtle" />
-        <div className="relative mx-auto max-w-6xl z-[2]">
-          <ScrollReveal>
-            <SectionLabel number="02" label="Work" />
-            <h2
-              className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
-              style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', transform: 'skewX(var(--skew-x))' }}
-            >
-              Selected <span className="text-[var(--color-accent)]">work.</span>
-            </h2>
-          </ScrollReveal>
-          <div className="mt-12 grid gap-6 md:gap-8 md:grid-cols-2">
-            {projects.map((project, i) => (
-              <div
-                key={project.id}
-                className={project.featured ? 'md:col-span-2' : ''}
-              >
-                <ProjectCardP5 project={project} index={i} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* === ABOUT === */}
       <section id="about" className="relative overflow-hidden px-6 py-24 sm:py-32">
         <HalftoneField density="subtle" />
@@ -180,7 +154,7 @@ export default function Home() {
           {/* Left: prose */}
           <div>
             <ScrollReveal>
-              <SectionLabel number="03" label="About" />
+              <SectionLabel number="02" label="About" />
               <h2
                 className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
                 style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', transform: 'skewX(var(--skew-x))' }}
@@ -219,7 +193,7 @@ export default function Home() {
         <HalftoneField density="subtle" />
         <div className="relative mx-auto max-w-6xl z-[2]">
           <ScrollReveal>
-            <SectionLabel number="04" label="Experience" />
+            <SectionLabel number="03" label="Experience" />
             <h2
               className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
               style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', transform: 'skewX(var(--skew-x))' }}
@@ -230,6 +204,32 @@ export default function Home() {
           <div className="mt-10 space-y-6">
             {experience.map((exp) => (
               <ExperienceCardP5 key={exp.company} experience={exp} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* === PROJECTS === */}
+      <section id="projects" className="relative px-6 py-24 sm:py-32">
+        <HalftoneField density="subtle" />
+        <div className="relative mx-auto max-w-6xl z-[2]">
+          <ScrollReveal>
+            <SectionLabel number="04" label="Projects" />
+            <h2
+              className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
+              style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', transform: 'skewX(var(--skew-x))' }}
+            >
+              Selected <span className="text-[var(--color-accent)]">work.</span>
+            </h2>
+          </ScrollReveal>
+          <div className="mt-12 grid gap-6 md:gap-8 md:grid-cols-2">
+            {projects.map((project, i) => (
+              <div
+                key={project.id}
+                className={project.featured ? 'md:col-span-2' : ''}
+              >
+                <ProjectCardP5 project={project} index={i} />
+              </div>
             ))}
           </div>
         </div>
