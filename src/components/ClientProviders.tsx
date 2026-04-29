@@ -1,21 +1,10 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-
-const ParticleBackground = dynamic(
-  () => import('@/components/ParticleBackground'),
-  { ssr: false }
-);
-
-const CommandPalette = dynamic(
-  () => import('@/components/CommandPalette'),
-  { ssr: false }
-);
+import CommandPalette from './CommandPalette';
 
 export default function ClientProviders() {
   return (
     <>
-      <ParticleBackground />
       <CommandPalette />
     </>
   );
