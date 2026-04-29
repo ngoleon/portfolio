@@ -76,9 +76,9 @@ export default function Home() {
         <motion.div
           data-tarot
           className="absolute z-[6]"
-          style={{ top: '9rem', right: '2rem' }}
-          initial={{ opacity: 0, scale: 0.9, rotate: -8 }}
-          animate={{ opacity: 1, scale: 1, rotate: -3 }}
+          style={{ top: '9rem', right: '4rem' }}
+          initial={{ opacity: 0, scale: 0.9, rotate: -4 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 0.3, ease: 'easeOut', delay: 0.1 }}
         >
           <TarotCard />
