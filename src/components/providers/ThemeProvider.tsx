@@ -14,25 +14,17 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 const STORAGE_KEY = 'ln-theme';
 
-function getInitialTheme(): Theme {
-  if (typeof window === 'undefined') return 'dark';
-  const stored = localStorage.getItem(STORAGE_KEY) as Theme | null;
-  if (stored === 'light' || stored === 'dark') return stored;
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-}
-
 export default function ThemeProvider({ children }: { children: ReactNode }) {
-  // Default to 'dark' on the server; client effect corrects on mount
-  const [theme, setThemeState] = useState<Theme>('dark');
+  // Lazy initializer: SSR returns 'dark'; client picks up real theme from data-theme
+  // set by the no-flash script in <head> before hydration.
+  const [theme, setThemeState] = useState<Theme>(() => {
+    if (typeof document === 'undefined') return 'dark';
+    const dom = document.documentElement.dataset.theme;
+    if (dom === 'light' || dom === 'dark') return dom;
+    return 'dark';
+  });
 
-  // Sync with stored/preferred on mount
-  useEffect(() => {
-    const initial = getInitialTheme();
-    setThemeState(initial);
-    document.documentElement.dataset.theme = initial;
-  }, []);
-
-  // Sync data-theme attribute whenever theme changes
+  // Sync data-theme attribute whenever theme changes (no setState here — this is fine)
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
   }, [theme]);

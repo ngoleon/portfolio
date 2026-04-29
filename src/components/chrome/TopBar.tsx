@@ -5,18 +5,15 @@ import ThemeToggle from './ThemeToggle';
 interface TopBarProps {
   /** Section number/total to display, e.g. "01 / 04" */
   indicator?: string;
-  /** Status text on the left, e.g. "★ SYSTEM · ACTIVE" */
-  status?: string;
   /** Center text, e.g. "SYDNEY · 2026" */
   center?: string;
 }
 
 export default function TopBar({
   indicator = '01 / 04',
-  status = '★ SYSTEM · ACTIVE',
   center = 'SYDNEY · 2026',
 }: TopBarProps) {
-  // Split status into label + accent so the "★" star and "ACTIVE" word render in red
+  // Status row: star + SYSTEM (red) + ACTIVE
   return (
     <header
       role="banner"
