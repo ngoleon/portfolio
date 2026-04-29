@@ -57,7 +57,7 @@ export default function Home() {
             <HeroName first="Leon" last="Ngo" punct="!" />
           </div>
           <p
-            className="mt-4 font-mono tracking-[0.04em] opacity-85"
+            className="mt-8 font-mono tracking-[0.04em] opacity-85"
             style={{ fontSize: 'clamp(0.75rem, 1.1vw, 0.95rem)' }}
           >
             Software Engineer{' '}
@@ -91,7 +91,7 @@ export default function Home() {
         <motion.div
           data-cluster
           className="absolute z-[6] flex items-end gap-4 sm:gap-6"
-          style={{ left: 'clamp(1rem, 4vw, 2.5rem)', bottom: 'clamp(6rem, 12vh, 9.5rem)' }}
+          style={{ left: 'clamp(1rem, 4vw, 2.5rem)', top: 'clamp(28rem, 56vh, 34rem)' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.6 }}
