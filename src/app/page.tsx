@@ -95,7 +95,7 @@ export default function Home() {
         <motion.div
           data-cluster
           className="absolute z-[6] flex items-end gap-4 sm:gap-6"
-          style={{ left: '2rem', top: '27rem' }}
+          style={{ left: '2rem', top: '29rem' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.6 }}

@@ -8,11 +8,11 @@ interface HeroNameProps {
 export default function HeroName({ first, last, punct = '!' }: HeroNameProps) {
   return (
     <h1
-      className="m-0 font-display italic font-black leading-[0.82] tracking-[-0.06em] origin-left text-[var(--color-ink)]"
+      className="m-0 font-display italic font-black leading-[0.85] tracking-[-0.05em] origin-left text-[var(--color-ink)]"
       style={{
-        fontSize: 'clamp(3.5rem, 10vw, 9rem)',
+        fontSize: 'clamp(3rem, 8vw, 7.5rem)',
         transform: 'skewX(var(--skew-x))',
-        textShadow: '6px 6px 0 var(--color-accent)',
+        textShadow: 'var(--shadow-text)',
       }}
     >
       {first}
@@ -20,7 +20,7 @@ export default function HeroName({ first, last, punct = '!' }: HeroNameProps) {
       {last}
       <span
         className="text-[var(--color-accent)]"
-        style={{ textShadow: '6px 6px 0 var(--color-ink)' }}
+        style={{ textShadow: '4px 4px 0 var(--color-ink)' }}
       >
         {punct}
       </span>
