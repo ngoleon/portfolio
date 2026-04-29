@@ -1,3 +1,5 @@
+'use client';
+
 import ScrollReveal from '@/components/ScrollReveal';
 import ProjectCard from '@/components/ProjectCard';
 import ExperienceCard from '@/components/ExperienceCard';
@@ -11,6 +13,7 @@ import InfoCard from '@/components/ui/InfoCard';
 import StampTag from '@/components/ui/StampTag';
 import Watermark from '@/components/ui/Watermark';
 import HalftoneField from '@/components/ui/HalftoneField';
+import { motion } from 'motion/react';
 
 const skills = {
   Languages: ['C#', 'Java', 'TypeScript', 'Python', 'C/C++', 'SQL', 'HCL'],
@@ -47,9 +50,12 @@ export default function Home() {
         />
 
         {/* === Name zone === */}
-        <div
+        <motion.div
           className="absolute z-[5] max-w-[80%] md:max-w-[50%]"
           style={{ top: 'clamp(4rem, 8vh, 6rem)', left: 'clamp(1rem, 4vw, 2.5rem)' }}
+          initial={{ opacity: 0, y: -16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.2 }}
         >
           <SectionLabel number="01" label="Index" />
           <div className="mt-2.5">
@@ -62,19 +68,22 @@ export default function Home() {
             Software Engineer{' '}
             <span className="text-[var(--color-accent)]">// distributed systems · dev tools</span>
           </p>
-        </div>
+        </motion.div>
 
         {/* === Tarot card right side === */}
-        <div
+        <motion.div
           data-tarot
           className="absolute z-[6]"
           style={{
             top: 'clamp(4rem, 6vh, 5.5rem)',
             right: 'clamp(1rem, 4vw, 2.5rem)',
           }}
+          initial={{ opacity: 0, scale: 0.9, rotate: -8 }}
+          animate={{ opacity: 1, scale: 1, rotate: -3 }}
+          transition={{ duration: 0.3, ease: 'easeOut', delay: 0.1 }}
         >
           <TarotCard />
-        </div>
+        </motion.div>
 
         {/* === Diagonal slash === */}
         <DiagonalSlash top="clamp(18rem, 36vh, 22rem)" height="clamp(60px, 10vw, 75px)" align="center">
@@ -84,10 +93,13 @@ export default function Home() {
         </DiagonalSlash>
 
         {/* === Bottom cluster: mission card + stamp === */}
-        <div
+        <motion.div
           data-cluster
           className="absolute z-[6] flex items-end gap-4 sm:gap-6"
           style={{ left: 'clamp(1rem, 4vw, 2.5rem)', bottom: 'clamp(6rem, 12vh, 9.5rem)' }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.6 }}
         >
           <InfoCard label="// CURRENT MISSION">
             .NET 10 microservices on Azure · K8s · IaC with Terragrunt · AI-assisted dev tooling
@@ -95,7 +107,7 @@ export default function Home() {
           <div style={{ transform: 'translateY(-2rem)' }}>
             <StampTag text="ROOT ACCESS GRANTED" />
           </div>
-        </div>
+        </motion.div>
         {/* Mobile-only adjustments — desktop absolute layout still fires above clamp values, but at <768px we re-stack the tarot and cluster vertically */}
         <style>{`
   @media (max-width: 767px) {
