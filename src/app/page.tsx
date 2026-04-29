@@ -108,11 +108,11 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* Mobile (<768px): convert hero from absolute composition to a
-            stacked column. Each piece falls into normal flow, in source order.
-            Desktop (>=768px) keeps the rem-positioned absolute layout. */}
+        {/* Narrow / mobile (<1024px): convert hero from absolute composition
+            to a stacked column. The absolute layout needs ~1024px of width
+            for the tarot + slash + cluster to coexist without overlap. */}
         <style>{`
-  @media (max-width: 767px) {
+  @media (max-width: 1023px) {
     section[id='index'] {
       min-height: auto !important;
       max-height: none !important;
