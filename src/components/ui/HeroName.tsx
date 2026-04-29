@@ -8,7 +8,7 @@ interface HeroNameProps {
 export default function HeroName({ first, last, punct = '!' }: HeroNameProps) {
   return (
     <h1
-      className="m-0 font-display italic font-medium leading-[0.85] tracking-[-0.04em] origin-left text-[var(--color-ink)]"
+      className="m-0 font-display italic font-bold leading-[0.85] tracking-[-0.04em] origin-left text-[var(--color-ink)]"
       style={{
         fontSize: 'clamp(3rem, 8vw, 7.5rem)',
         transform: 'skewX(var(--skew-x))',
