@@ -54,8 +54,8 @@ export default function TarotCard({
         {/* Arcana symbol — circle + diamond */}
         <circle cx="100" cy="135" r="46" fill="none" stroke="var(--color-accent)" strokeWidth="3" />
         <path d="M100 89 L146 135 L100 181 L54 135 Z" fill="var(--color-accent)" />
-        <g transform="translate(100 148) skewX(-7) translate(-100 -148)">
-          <text x="100" y="148" textAnchor="middle" fontFamily="var(--font-display)" fontStyle="italic" fontWeight="900" fontSize="36" fill="#0a0606">
+        <g transform="translate(100 135) skewX(-7) translate(-100 -135)">
+          <text x="100" y="135" textAnchor="middle" dominantBaseline="central" fontFamily="var(--font-display)" fontStyle="italic" fontWeight="900" fontSize="36" fill="#0a0606">
             {numeral}
           </text>
         </g>

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono, Big_Shoulders } from 'next/font/google';
+import { Inter, JetBrains_Mono, Archivo } from 'next/font/google';
 import ClientProviders from '@/components/ClientProviders';
 import LenisProvider from '@/components/providers/LenisProvider';
 import TopBar from '@/components/chrome/TopBar';
@@ -14,9 +14,10 @@ const inter = Inter({
   display: 'swap',
 });
 
-const bigShoulders = Big_Shoulders({
+const archivo = Archivo({
   subsets: ['latin'],
   weight: ['700', '800', '900'],
+  style: ['normal', 'italic'],
   variable: '--font-display-headline',
   display: 'swap',
 });
@@ -63,7 +64,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme="dark"
-      className={`${inter.variable} ${bigShoulders.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${archivo.variable} ${jetbrainsMono.variable}`}
     >
       <body className="min-h-dvh bg-bg text-ink antialiased">
         <LenisProvider>
