@@ -56,6 +56,16 @@
   --color-stamp-fg:     #0a0606;
 }
 
+/* Soften the global skew on narrow viewports — at -7deg the
+   project/experience cards overflow horizontally because the skew
+   shifts the bottom-right corner ~25px past the article's right
+   edge. -3deg keeps the design language but fits within bounds. */
+@media (max-width: 768px) {
+  :root, [data-theme="dark"] {
+    --skew-x: -3deg;
+  }
+}
+
 /* ================================================================
    BASE
    ================================================================ */
