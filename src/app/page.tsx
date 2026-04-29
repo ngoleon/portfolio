@@ -1,7 +1,7 @@
 'use client';
 
 import ScrollReveal from '@/components/ScrollReveal';
-import ProjectCard from '@/components/ProjectCard';
+import ProjectCardP5 from '@/components/ui/ProjectCardP5';
 import ExperienceCard from '@/components/ExperienceCard';
 import { projects } from '@/data/projects';
 import { experience } from '@/data/experience';
@@ -184,19 +184,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects */}
-      <section id="projects" className="px-6 py-16 md:py-24">
-        <div className="mx-auto max-w-5xl">
-          {/* SectionLabel placeholder — rebuilt in Phase 6 */}
-          <div className="grid gap-4 md:grid-cols-2">
+      {/* === PROJECTS / WORK === */}
+      <section id="projects" className="relative overflow-hidden px-6 py-24 sm:py-32">
+        <HalftoneField density="subtle" />
+        <div className="relative mx-auto max-w-6xl z-[2]">
+          <SectionLabel number="03" label="Work" />
+          <h2
+            className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
+            style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', transform: 'skewX(var(--skew-x))' }}
+          >
+            Selected <span className="text-[var(--color-accent)]">work.</span>
+          </h2>
+          <div className="mt-12 grid gap-6 md:gap-8 md:grid-cols-2">
             {projects.map((project, i) => (
-              <ScrollReveal
+              <div
                 key={project.id}
-                delay={i * 0.05}
                 className={project.featured ? 'md:col-span-2' : ''}
               >
-                <ProjectCard project={project} />
-              </ScrollReveal>
+                <ProjectCardP5 project={project} index={i} />
+              </div>
             ))}
           </div>
         </div>
