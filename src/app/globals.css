@@ -12,6 +12,13 @@
   --color-accent-deep:  #b9151e;     /* shadow red */
   --color-halftone:     #0a0606;     /* halftone dot color = ink */
 
+  /* Stamp panel — always dark with cream text, theme-independent.
+     Used on slash banners and mission cards so they read as "stamp"
+     in both themes (visible on cream paper, blends into dark like a
+     riveted plate). */
+  --color-stamp-bg:     #0a0606;
+  --color-stamp-fg:     #f4eedc;
+
   /* Typography */
   --font-display: var(--font-inter), system-ui, sans-serif;   /* italic black weight, used skewed */
   --font-body:    var(--font-inter), system-ui, sans-serif;
