@@ -112,7 +112,7 @@ export default function Home() {
             to a stacked column. The absolute layout needs ~1024px of width
             for the tarot + slash + cluster to coexist without overlap. */}
         <style>{`
-  @media (max-width: 1279px) {
+  @media (max-width: 1439px) {
     section[id='index'] {
       min-height: auto !important;
       max-height: none !important;
