@@ -1,6 +1,5 @@
 'use client';
 
-import ScrollReveal from '@/components/ScrollReveal';
 import ProjectCardP5 from '@/components/ui/ProjectCardP5';
 import ExperienceCardP5 from '@/components/ui/ExperienceCardP5';
 import { projects } from '@/data/projects';
@@ -16,13 +15,6 @@ import StampTag from '@/components/ui/StampTag';
 import Watermark from '@/components/ui/Watermark';
 import HalftoneField from '@/components/ui/HalftoneField';
 import { motion } from 'motion/react';
-
-const skills = {
-  Languages: ['C#', 'Java', 'TypeScript', 'Python', 'C/C++', 'SQL', 'HCL'],
-  Backend: ['.NET 10', 'Spring Boot', 'Node.js', 'React', 'Wolverine CQRS'],
-  Cloud: ['Azure', 'AWS', 'Kubernetes', 'Terragrunt', 'Docker'],
-  DevOps: ['ArgoCD', 'GitHub Actions', 'Helm', 'Grafana', 'OpenTelemetry'],
-};
 
 const socialLinks = [
   { href: 'https://github.com/ngoleon', name: 'GitHub' },
