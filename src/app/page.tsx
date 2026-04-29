@@ -47,7 +47,7 @@ export default function Home() {
         {/* === Name zone === */}
         <motion.div
           className="absolute z-[5] max-w-[80%] md:max-w-[50%]"
-          style={{ top: 'clamp(4rem, 8vh, 6rem)', left: 'clamp(1rem, 4vw, 2.5rem)' }}
+          style={{ top: '8%', left: 'clamp(1rem, 4vw, 2.5rem)' }}
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.2 }}
@@ -70,7 +70,7 @@ export default function Home() {
           data-tarot
           className="absolute z-[6]"
           style={{
-            top: 'clamp(9rem, 16vh, 12rem)',
+            top: '15%',
             right: 'clamp(1rem, 4vw, 2.5rem)',
           }}
           initial={{ opacity: 0, scale: 0.9, rotate: -8 }}
@@ -81,7 +81,7 @@ export default function Home() {
         </motion.div>
 
         {/* === Diagonal slash === */}
-        <DiagonalSlash top="clamp(26rem, 52vh, 32rem)" height="clamp(60px, 10vw, 75px)" align="center">
+        <DiagonalSlash top="48%" height="clamp(60px, 10vw, 75px)" align="center">
           DISTRIBUTED SYSTEMS{' '}
           <span className="text-[var(--color-accent)]">·</span> CLOUD{' '}
           <span className="text-[var(--color-accent)]">·</span> DEV TOOLS
@@ -91,7 +91,7 @@ export default function Home() {
         <motion.div
           data-cluster
           className="absolute z-[6] flex items-end gap-4 sm:gap-6"
-          style={{ left: 'clamp(1rem, 4vw, 2.5rem)', top: 'clamp(32rem, 64vh, 40rem)' }}
+          style={{ left: 'clamp(1rem, 4vw, 2.5rem)', top: '60%' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.6 }}
@@ -99,7 +99,7 @@ export default function Home() {
           <InfoCard label="// CURRENT MISSION">
             .NET 10 microservices on Azure · K8s · IaC with Terragrunt · AI-assisted dev tooling
           </InfoCard>
-          <div style={{ transform: 'translateY(-2rem)' }}>
+          <div style={{ transform: 'translateY(-3rem)' }}>
             <StampTag text="ROOT ACCESS GRANTED" />
           </div>
         </motion.div>

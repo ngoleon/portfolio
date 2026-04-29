@@ -10,7 +10,7 @@ interface InfoCardProps {
 export default function InfoCard({ label, className = '', children }: InfoCardProps) {
   return (
     <div
-      className={`skew-italic shadow-[var(--shadow-card-md)] bg-[var(--color-stamp-bg)] text-[var(--color-stamp-fg)] max-w-[320px] ${className}`}
+      className={`skew-italic shadow-[var(--shadow-card-md)] bg-[#0a0606] text-[#f4eedc] max-w-[320px] ${className}`}
     >
       <div className="skew-italic-counter">
         <div className="px-5 py-4 font-mono text-[0.78rem] leading-[1.6] tracking-[0.02em]">
