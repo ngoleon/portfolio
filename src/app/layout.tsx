@@ -3,6 +3,8 @@ import { Inter, JetBrains_Mono } from 'next/font/google';
 import ClientProviders from '@/components/ClientProviders';
 import ThemeProvider from '@/components/providers/ThemeProvider';
 import LenisProvider from '@/components/providers/LenisProvider';
+import TopBar from '@/components/chrome/TopBar';
+import BottomNav from '@/components/chrome/BottomNav';
 import './globals.css';
 
 const inter = Inter({
@@ -77,7 +79,9 @@ export default function RootLayout({
         <ThemeProvider>
           <LenisProvider>
             <ClientProviders />
-            <main className="min-h-dvh">{children}</main>
+            <TopBar />
+            <main className="min-h-dvh pt-12 pb-14">{children}</main>
+            <BottomNav />
           </LenisProvider>
         </ThemeProvider>
       </body>
