@@ -19,7 +19,7 @@
   --color-stamp-fg:     #0a0606;
 
   /* Typography */
-  --font-display: var(--font-display-headline), var(--font-inter), system-ui, sans-serif;   /* heavy condensed display, used italic + skewed */
+  --font-display: var(--font-inter), system-ui, sans-serif;   /* italic black weight, used skewed */
   --font-body:    var(--font-inter), system-ui, sans-serif;
   --font-mono:    var(--font-jetbrains-mono), ui-monospace, monospace;
 
