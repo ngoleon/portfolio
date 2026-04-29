@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import ClientProviders from '@/components/ClientProviders';
+import ThemeProvider from '@/components/providers/ThemeProvider';
+import LenisProvider from '@/components/providers/LenisProvider';
 import './globals.css';
 
 const inter = Inter({
@@ -72,8 +74,12 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-dvh bg-bg text-ink antialiased">
-        <ClientProviders />
-        <main className="min-h-dvh">{children}</main>
+        <ThemeProvider>
+          <LenisProvider>
+            <ClientProviders />
+            <main className="min-h-dvh">{children}</main>
+          </LenisProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
