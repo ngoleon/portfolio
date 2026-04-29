@@ -1,19 +1,13 @@
 import type { Metadata } from 'next';
-import { Syne, DM_Sans, JetBrains_Mono } from 'next/font/google';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import ClientProviders from '@/components/ClientProviders';
 import './globals.css';
 
-const syne = Syne({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-syne',
-  display: 'swap',
-});
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  variable: '--font-dm-sans',
+  weight: ['400', '500', '700', '900'],
+  style: ['normal', 'italic'],
+  variable: '--font-inter',
   display: 'swap',
 });
 
@@ -30,14 +24,14 @@ export const metadata: Metadata = {
     default: 'Leon Ngo — Software Engineer',
     template: '%s — Leon Ngo',
   },
-  description: 'Software developer building cloud-native microservices, platform infrastructure, and AI-assisted developer tooling.',
+  description: 'Software engineer building cloud-native microservices, platform infrastructure, and AI-assisted developer tooling.',
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
   openGraph: {
     title: 'Leon Ngo — Software Engineer',
-    description: 'Software developer building cloud-native microservices, platform infrastructure, and AI-assisted developer tooling.',
+    description: 'Software engineer building cloud-native microservices, platform infrastructure, and AI-assisted developer tooling.',
     url: 'https://ngoleon.com',
     siteName: 'Leon Ngo',
     locale: 'en_US',
@@ -47,28 +41,24 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Leon Ngo — Software Engineer',
-    description: 'Software developer building cloud-native microservices, platform infrastructure, and AI-assisted developer tooling.',
+    description: 'Software engineer building cloud-native microservices, platform infrastructure, and AI-assisted developer tooling.',
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${syne.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}>
-      <body style={{ backgroundColor: '#09090b' }}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
+      // suppressHydrationWarning is required because the ThemeProvider sets data-theme on <html> client-side
+      suppressHydrationWarning
+    >
+      <body className="min-h-dvh bg-bg text-ink antialiased">
         <ClientProviders />
-        <Navigation />
-        <main className="min-h-screen pt-14">
-          {children}
-        </main>
-        <Footer />
+        <main className="min-h-dvh">{children}</main>
       </body>
     </html>
   );
