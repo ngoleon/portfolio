@@ -1,47 +1,148 @@
 @import "tailwindcss";
 
+/* ================================================================
+   THEME TOKENS — light + dark via [data-theme] on <html>
+   ================================================================ */
+
 @theme {
-  /* Colors — refined zinc palette */
-  --color-background: #09090b;
-  --color-surface: #18181b;
-  --color-surface-bright: #27272a;
-  --color-text: #fafafa;
-  --color-text-muted: #a1a1aa;
-  --color-text-dim: #71717a;
-  --color-accent: #34d399;
-  --color-accent-secondary: #fbbf24;
-  --color-accent-glow: oklch(from #34d399 l c h / 0.12);
-  --color-border: #27272a;
-  --color-selection: oklch(from #34d399 l c h / 0.2);
+  /* Default (light) — overridden by [data-theme="dark"] below */
+  --color-bg:           #f4eedc;     /* warm cream paper */
+  --color-ink:          #0a0606;     /* warm near-black */
+  --color-accent:       #e8202a;     /* vermillion red */
+  --color-accent-deep:  #b9151e;     /* shadow red */
+  --color-halftone:     #0a0606;     /* halftone dot color = ink */
 
   /* Typography */
-  --font-heading: var(--font-syne), system-ui, sans-serif;
-  --font-body: var(--font-dm-sans), system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), monospace;
+  --font-display: var(--font-inter), system-ui, sans-serif;   /* italic black weight, used skewed */
+  --font-body:    var(--font-inter), system-ui, sans-serif;
+  --font-mono:    var(--font-jetbrains-mono), ui-monospace, monospace;
 
-  /* Shadows */
-  --shadow-glow-sm: 0 0 8px var(--color-accent-glow);
-  --shadow-glow-md: 0 0 20px oklch(from #34d399 l c h / 0.15);
-  --shadow-glow-lg: 0 0 32px oklch(from #34d399 l c h / 0.18);
+  /* Skew system — used everywhere */
+  --skew-x:        -7deg;
+  --skew-y:        -3deg;
+  --rotate-stamp:  -7deg;
+  --rotate-tarot:  -3deg;
+
+  /* Shadow system — hard solid offsets, never blur */
+  --shadow-card:    8px 8px 0 var(--color-accent);
+  --shadow-card-md: 6px 6px 0 var(--color-accent);
+  --shadow-card-sm: 4px 4px 0 var(--color-accent);
+  --shadow-text:    4px 4px 0 var(--color-accent);
+  --shadow-text-sm: 3px 3px 0 var(--color-accent);
+
+  /* Easing — the P5 snap-forward overshoot */
+  --ease-snap: cubic-bezier(0.2, 0.8, 0.2, 1.05);
+
+  /* Breakpoints (default Tailwind ones are fine; customize if needed) */
 }
 
-/* Base styles */
+/* Dark theme overrides — flip bg/ink, brighten accent slightly */
+[data-theme="dark"] {
+  --color-bg:           #0a0606;
+  --color-ink:          #f4eedc;
+  --color-accent:       #e8202a;
+  --color-accent-deep:  #ff3a44;
+  --color-halftone:     #f4eedc;
+}
+
+/* ================================================================
+   BASE
+   ================================================================ */
+
+html {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  /* Prevent layout shift when theme switches */
+  color-scheme: light dark;
+}
+
 body {
-  background-color: var(--color-background);
-  color: var(--color-text);
+  background: var(--color-bg);
+  color: var(--color-ink);
   font-family: var(--font-body);
 }
 
-/* Selection highlight */
 ::selection {
-  background-color: var(--color-selection);
-  color: var(--color-text);
+  background: var(--color-accent);
+  color: var(--color-bg);
 }
 
-/* Focus ring for keyboard navigation */
+/* Focus ring — matches red palette */
 *:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
-  box-shadow: var(--shadow-glow-sm);
+  box-shadow: 0 0 0 4px rgba(232, 32, 42, 0.18);
+}
+
+/* Reduced motion — disable transforms but keep color/opacity */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* ================================================================
+   HALFTONE — dot pattern utility
+   ================================================================ */
+
+@utility halftone-bg {
+  background-image: radial-gradient(circle, var(--color-halftone) 1.2px, transparent 1.2px);
+  background-size: 7px 7px;
+}
+
+@utility halftone-bg-subtle {
+  background-image: radial-gradient(circle, var(--color-halftone) 1px, transparent 1px);
+  background-size: 6px 6px;
+  opacity: 0.08;
+}
+
+@utility halftone-bg-medium {
+  background-image: radial-gradient(circle, var(--color-halftone) 1.2px, transparent 1.2px);
+  background-size: 6px 6px;
+  opacity: 0.18;
+}
+
+@utility halftone-bg-heavy {
+  background-image: radial-gradient(circle, var(--color-halftone) 1.5px, transparent 1.5px);
+  background-size: 5px 5px;
+  opacity: 0.55;
+}
+
+/* ================================================================
+   PAPER GRAIN — SVG turbulence overlay for warmth on light theme
+   ================================================================ */
+
+@utility paper-grain {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.85' numOctaves='3'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.05 0 0 0 0 0.05 0 0 0 0.5 0'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.6'/></svg>");
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+[data-theme="dark"] .paper-grain {
+  /* Hide grain on dark theme — it muddies the palette */
+  display: none;
+}
+
+/* ================================================================
+   SKEW UTILITIES — shorthand for the P5 skew system
+   ================================================================ */
+
+@utility skew-italic {
+  transform: skewX(var(--skew-x));
+}
+
+@utility skew-banner {
+  transform: skewY(var(--skew-y)) skewX(var(--skew-x));
+}
+
+@utility skew-banner-counter {
+  /* Counter-skew for content inside a skewed container */
+  transform: skewX(calc(-1 * var(--skew-x))) skewY(calc(-1 * var(--skew-y)));
+}
+
+@utility skew-italic-counter {
+  transform: skewX(calc(-1 * var(--skew-x)));
 }
 
