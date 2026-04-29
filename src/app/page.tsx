@@ -48,7 +48,7 @@ export default function Home() {
 
         {/* === Name zone === */}
         <div
-          className="absolute z-[5] max-w-[50%]"
+          className="absolute z-[5] max-w-[80%] md:max-w-[50%]"
           style={{ top: 'clamp(4rem, 8vh, 6rem)', left: 'clamp(1rem, 4vw, 2.5rem)' }}
         >
           <SectionLabel number="01" label="Index" />
@@ -66,6 +66,7 @@ export default function Home() {
 
         {/* === Tarot card right side === */}
         <div
+          data-tarot
           className="absolute z-[6]"
           style={{
             top: 'clamp(4rem, 6vh, 5.5rem)',
@@ -84,6 +85,7 @@ export default function Home() {
 
         {/* === Bottom cluster: mission card + stamp === */}
         <div
+          data-cluster
           className="absolute z-[6] flex items-end gap-4 sm:gap-6"
           style={{ left: 'clamp(1rem, 4vw, 2.5rem)', bottom: 'clamp(6rem, 12vh, 9.5rem)' }}
         >
@@ -94,6 +96,25 @@ export default function Home() {
             <StampTag text="ROOT ACCESS GRANTED" />
           </div>
         </div>
+        {/* Mobile-only adjustments — desktop absolute layout still fires above clamp values, but at <768px we re-stack the tarot and cluster vertically */}
+        <style>{`
+  @media (max-width: 767px) {
+    section[id='index'] > div[data-tarot] {
+      position: relative;
+      top: auto;
+      right: auto;
+      margin: 1rem auto 0;
+      display: block;
+    }
+    section[id='index'] > div[data-cluster] {
+      position: static;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 1rem;
+      padding: 0 1rem;
+    }
+  }
+`}</style>
       </section>
 
       {/* About */}
