@@ -1,6 +1,5 @@
 import TextDecrypt from '@/components/TextDecrypt';
 import ScrollReveal from '@/components/ScrollReveal';
-import SectionLabel from '@/components/SectionLabel';
 import ProjectCard from '@/components/ProjectCard';
 import ExperienceCard from '@/components/ExperienceCard';
 import ProfilePhoto from '@/components/ProfilePhoto';
@@ -66,9 +65,7 @@ export default function Home() {
           <ScrollReveal className="mb-8 flex justify-center lg:hidden">
             <ProfilePhoto />
           </ScrollReveal>
-          <ScrollReveal>
-            <SectionLabel>About</SectionLabel>
-          </ScrollReveal>
+          {/* SectionLabel placeholder — rebuilt in Phase 6 */}
           <div className="grid gap-12 lg:grid-cols-[1fr_auto]">
             <div>
               <ScrollReveal>
@@ -108,9 +105,7 @@ export default function Home() {
       {/* Experience */}
       <section id="experience" className="px-6 py-16 md:py-24">
         <div className="mx-auto max-w-5xl">
-          <ScrollReveal>
-            <SectionLabel>Experience</SectionLabel>
-          </ScrollReveal>
+          {/* SectionLabel placeholder — rebuilt in Phase 6 */}
           <div className="space-y-4">
             {experience.map((exp, i) => (
               <ScrollReveal key={exp.company} delay={i * 0.05}>
@@ -124,9 +119,7 @@ export default function Home() {
       {/* Projects */}
       <section id="projects" className="px-6 py-16 md:py-24">
         <div className="mx-auto max-w-5xl">
-          <ScrollReveal>
-            <SectionLabel>Projects</SectionLabel>
-          </ScrollReveal>
+          {/* SectionLabel placeholder — rebuilt in Phase 6 */}
           <div className="grid gap-4 md:grid-cols-2">
             {projects.map((project, i) => (
               <ScrollReveal
@@ -144,9 +137,7 @@ export default function Home() {
       {/* Contact */}
       <section id="contact" className="px-6 py-16 md:py-24">
         <div className="mx-auto max-w-5xl">
-          <ScrollReveal>
-            <SectionLabel>Contact</SectionLabel>
-          </ScrollReveal>
+          {/* SectionLabel placeholder — rebuilt in Phase 6 */}
           <ScrollReveal delay={0.05}>
             <p className="mb-6 text-xl text-text">
               Interested in working together?
