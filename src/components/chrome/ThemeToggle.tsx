@@ -23,10 +23,7 @@ export default function ThemeToggle() {
         transition={{ duration: 0.3, ease: 'easeOut' }}
       >
         {theme === 'dark' ? (
-          /* Moon */
-          <path d="M11 8.5A4.5 4.5 0 0 1 5.5 3 4.5 4.5 0 1 0 11 8.5Z" fill="currentColor" />
-        ) : (
-          /* Sun */
+          /* Sun — shown in dark theme; clicking switches to light */
           <>
             <circle cx="7" cy="7" r="2.5" fill="currentColor" />
             <line x1="7" y1="1" x2="7" y2="2.5" />
@@ -38,6 +35,9 @@ export default function ThemeToggle() {
             <line x1="2.6" y1="11.4" x2="3.7" y2="10.3" />
             <line x1="10.3" y1="3.7" x2="11.4" y2="2.6" />
           </>
+        ) : (
+          /* Moon — shown in light theme; clicking switches to dark */
+          <path d="M11 8.5A4.5 4.5 0 0 1 5.5 3 4.5 4.5 0 1 0 11 8.5Z" fill="currentColor" />
         )}
       </motion.svg>
     </button>
