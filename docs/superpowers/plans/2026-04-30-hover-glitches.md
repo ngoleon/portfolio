@@ -314,7 +314,7 @@ EOF
 
 The four section headlines all follow the same pattern: an `h2` inside a `ScrollReveal` wrapper, with the same className and inline-style structure. We need to add the hook to each.
 
-- [ ] **Step 1: Add the import**
+- [x] **Step 1: Add the import**
 
 At the top of `src/app/page.tsx`, after the other component imports, add:
 
@@ -322,7 +322,7 @@ At the top of `src/app/page.tsx`, after the other component imports, add:
 import { useGlitch } from '@/hooks/useGlitch';
 ```
 
-- [ ] **Step 2: Instantiate four hook instances inside `Home()`**
+- [x] **Step 2: Instantiate four hook instances inside `Home()`**
 
 Each headline needs its own hook instance (per-element first-hover tracking). Inside the `Home()` function body, *before* the returned JSX, add:
 
@@ -333,7 +333,7 @@ Each headline needs its own hook instance (per-element first-hover tracking). In
   const contactGlitch = useGlitch();
 ```
 
-- [ ] **Step 3: Spread into the About headline**
+- [x] **Step 3: Spread into the About headline**
 
 Find this block (around line 183):
 
@@ -360,7 +360,7 @@ Replace with:
             </h2>
 ```
 
-- [ ] **Step 4: Spread into the Experience headline**
+- [x] **Step 4: Spread into the Experience headline**
 
 Find this block (around line 228):
 
@@ -387,7 +387,7 @@ Replace with:
             </h2>
 ```
 
-- [ ] **Step 5: Spread into the Projects headline**
+- [x] **Step 5: Spread into the Projects headline**
 
 Find this block (around line 253):
 
@@ -414,7 +414,7 @@ Replace with:
             </h2>
 ```
 
-- [ ] **Step 6: Spread into the Contact headline**
+- [x] **Step 6: Spread into the Contact headline**
 
 Find this block (around line 283):
 
@@ -441,7 +441,7 @@ Replace with:
             </h2>
 ```
 
-- [ ] **Step 7: Verify in the browser**
+- [ ] **Step 7: Verify in the browser** *(manual — controller verifies in Task 5)*
 
 Hard-refresh `http://localhost:3000/`. Scroll through every section.
 
@@ -452,7 +452,7 @@ Hard-refresh `http://localhost:3000/`. Scroll through every section.
 
 Each headline tracks its own first-hover state independently — chromatic should fire once per headline, then only jitter on that headline.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add src/app/page.tsx

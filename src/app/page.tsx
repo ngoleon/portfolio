@@ -17,6 +17,7 @@ import HalftoneField from '@/components/ui/HalftoneField';
 import ScrollReveal from '@/components/ScrollReveal';
 import Link from 'next/link';
 import { motion } from 'motion/react';
+import { useGlitch } from '@/hooks/useGlitch';
 
 const socialLinks = [
   { href: 'https://github.com/ngoleon', name: 'GitHub' },
@@ -24,6 +25,10 @@ const socialLinks = [
 ];
 
 export default function Home() {
+  const aboutGlitch = useGlitch();
+  const experienceGlitch = useGlitch();
+  const projectsGlitch = useGlitch();
+  const contactGlitch = useGlitch();
   return (
     <>
       {/* === HERO / INDEX === */}
@@ -181,6 +186,7 @@ export default function Home() {
             <ScrollReveal>
               <SectionLabel number="02" label="About" />
               <h2
+                {...aboutGlitch}
                 className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
                 style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', transform: 'skewX(var(--skew-x))' }}
               >
@@ -226,6 +232,7 @@ export default function Home() {
           <ScrollReveal>
             <SectionLabel number="03" label="Experience" />
             <h2
+              {...experienceGlitch}
               className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
               style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', transform: 'skewX(var(--skew-x))' }}
             >
@@ -251,6 +258,7 @@ export default function Home() {
           <ScrollReveal>
             <SectionLabel number="04" label="Projects" />
             <h2
+              {...projectsGlitch}
               className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
               style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', transform: 'skewX(var(--skew-x))' }}
             >
@@ -281,6 +289,7 @@ export default function Home() {
           <ScrollReveal>
             <SectionLabel number="05" label="Contact" />
             <h2
+              {...contactGlitch}
               className="mt-2 origin-left font-display italic font-black leading-[0.95] tracking-[-0.04em]"
               style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)', transform: 'skewX(var(--skew-x))' }}
             >
