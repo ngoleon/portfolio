@@ -21,14 +21,19 @@ export default function TopBar({ center = 'MELBOURNE · 2026' }: TopBarProps) {
   return (
     <header
       role="banner"
-      className="fixed top-0 left-0 right-0 z-50 grid grid-cols-3 items-center border-b-[3px] border-[var(--color-accent)] bg-[var(--color-stamp-bg)] text-[var(--color-stamp-fg)] px-4 sm:px-8 py-2 font-mono text-[0.65rem] sm:text-[0.7rem] tracking-[0.18em] uppercase"
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between border-b-[3px] border-[var(--color-accent)] bg-[var(--color-stamp-bg)] text-[var(--color-stamp-fg)] px-4 sm:px-8 py-2 font-mono text-[0.65rem] sm:text-[0.7rem] tracking-[0.18em] uppercase"
     >
-      <span className="flex items-center gap-2 justify-self-start">
+      <span className="flex items-center gap-2">
         <span aria-hidden="true" className="text-[var(--color-accent)]">★</span>
         <span><span className="text-[var(--color-accent)]">SYSTEM</span> · ACTIVE</span>
       </span>
-      <span className="hidden sm:inline justify-self-center">{center}</span>
-      <span className="flex items-center gap-3 justify-self-end">
+      {/* Center text is absolutely positioned so it stays viewport-centered
+          regardless of how wide the side spans grow. Pointer-events:none keeps
+          it from blocking interactions on the chrome behind it. */}
+      <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 hidden sm:inline">
+        {center}
+      </span>
+      <span className="flex items-center gap-3">
         <span className="text-[var(--color-accent)]">[ {activeLabel} {current} / {total} ]</span>
         <ThemeToggle />
       </span>
