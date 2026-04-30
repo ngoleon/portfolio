@@ -93,10 +93,10 @@ export default function Home() {
           <span className="text-[var(--color-accent)]">·</span> DEV TOOLS
         </DiagonalSlash>
 
-        {/* === Bottom cluster: mission card + stamp === */}
+        {/* === Bottom cluster: mission card === */}
         <motion.div
           data-cluster
-          className="absolute z-[6] flex items-end gap-4 sm:gap-6"
+          className="absolute z-[6]"
           style={{ left: '2rem', top: '29rem' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -109,13 +109,23 @@ export default function Home() {
             <br />
             · AI-assisted dev tooling
           </InfoCard>
+        </motion.div>
+
+        {/* === ROOT ACCESS stamp anchored bottom-right === */}
+        <motion.div
+          data-stamp
+          className="absolute z-[6]"
+          style={{ right: '2rem', bottom: '6rem' }}
+          initial={{ opacity: 0, scale: 0.85, rotate: -8 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.7 }}
+        >
           <Link
             href="#projects"
             aria-label="View selected projects"
-            style={{ transform: 'translateY(-3rem)' }}
             className="inline-block"
           >
-            <StampTag text="ROOT ACCESS GRANTED" />
+            <StampTag text="ROOT ACCESS GRANTED" rotate={7} />
           </Link>
         </motion.div>
 
@@ -132,7 +142,8 @@ export default function Home() {
     section[id='index'] > div[data-name],
     section[id='index'] > div[data-tarot],
     section[id='index'] > div[data-slash],
-    section[id='index'] > div[data-cluster] {
+    section[id='index'] > div[data-cluster],
+    section[id='index'] > div[data-stamp] {
       position: static !important;
       top: auto !important;
       left: auto !important;
@@ -146,20 +157,11 @@ export default function Home() {
       display: flex;
       justify-content: center;
     }
-    section[id='index'] > div[data-cluster] {
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    section[id='index'] > div[data-cluster] > div,
-    section[id='index'] > div[data-cluster] > a {
-      transform: none !important;
-    }
     /* Hide the slash banner and ROOT ACCESS stamp on narrow viewports —
        they're decorative pieces of the desktop composition that just
        add clutter when stacked. */
     section[id='index'] > div[data-slash],
-    section[id='index'] > div[data-cluster] > a {
+    section[id='index'] > div[data-stamp] {
       display: none !important;
     }
   }
