@@ -103,7 +103,11 @@ export default function Home() {
           transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.6 }}
         >
           <InfoCard label="// CURRENT MISSION">
-            .NET 10 microservices on Azure · K8s · IaC with Terragrunt · AI-assisted dev tooling
+            .NET 10 microservices on Azure
+            <br />
+            · K8s · IaC with Terragrunt
+            <br />
+            · AI-assisted dev tooling
           </InfoCard>
           <Link
             href="#projects"
