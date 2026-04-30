@@ -69,6 +69,7 @@ export default function Home() {
             style={{ fontSize: 'clamp(0.75rem, 1.1vw, 0.95rem)' }}
           >
             Software Engineer{' '}
+            <br className="xl:hidden" />
             <span className="text-[var(--color-accent)]">{'// distributed systems · dev tools'}</span>
           </p>
         </motion.div>
