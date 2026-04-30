@@ -148,7 +148,7 @@ EOF
 **Files:**
 - Create: `src/hooks/useGlitch.ts`
 
-- [ ] **Step 1: Create the hook file**
+- [x] **Step 1: Create the hook file**
 
 Create `src/hooks/useGlitch.ts`:
 
@@ -198,7 +198,7 @@ export function useGlitch() {
 }
 ```
 
-- [ ] **Step 2: Verify the file compiles**
+- [x] **Step 2: Verify the file compiles**
 
 The dev server has hot reload — saving the file will trigger a re-compile. Verify there's no TypeScript error in the dev server log:
 
@@ -208,7 +208,7 @@ tail -20 /tmp/portfolio-dev.log 2>/dev/null || echo "log unavailable; check the 
 
 Expected: no compilation errors mentioning `useGlitch.ts`.
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/hooks/useGlitch.ts
