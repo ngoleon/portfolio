@@ -151,6 +151,13 @@ export default function Home() {
     section[id='index'] > div[data-cluster] > a {
       transform: none !important;
     }
+    /* Hide the slash banner and ROOT ACCESS stamp on narrow viewports —
+       they're decorative pieces of the desktop composition that just
+       add clutter when stacked. */
+    section[id='index'] > div[data-slash],
+    section[id='index'] > div[data-cluster] > a {
+      display: none !important;
+    }
   }
 `}</style>
       </section>
