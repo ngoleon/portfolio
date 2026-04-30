@@ -280,8 +280,10 @@ body {
   50%      { transform: scale(1.075); }
 }
 
+/* Same cycle length so they pulse in sync — different peak heights keep
+   the visual character distinct. */
 .animate-breathe-tarot {
-  animation: breathe-tarot 1.5s ease-in-out 0.8s infinite;
+  animation: breathe-tarot 1.2s ease-in-out 0.8s infinite;
 }
 .animate-breathe-stamp {
   animation: breathe-stamp 1.2s ease-in-out 0.8s infinite;

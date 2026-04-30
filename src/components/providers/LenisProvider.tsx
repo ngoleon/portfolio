@@ -35,7 +35,9 @@ function AnchorScrollLinks() {
       if (!document.getElementById(id)) return;
 
       e.preventDefault();
-      lenis.scrollTo(href, { duration: 1.2, lock: true });
+      // Short duration + no lock so rapid-fire clicks cancel and replace the
+      // in-flight animation instead of feeling held until it finishes.
+      lenis.scrollTo(href, { duration: 0.65 });
       // Update history so back/forward + URL stay in sync without jumping.
       if (window.location.hash !== href) {
         history.pushState(null, '', href);
