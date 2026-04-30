@@ -222,6 +222,9 @@ body {
 }
 
 @keyframes glitch-tick {
+  /* 0% is a small offset (not rest) so the first sampled step under
+     steps(3, end) shows visible motion. With steps(3, end) the 0%
+     position is held for ~30ms before the next step fires. */
   0%   { translate: 0.5px 0.5px; }
   33%  { translate: 1px -1px; }
   66%  { translate: -2px 1px; }

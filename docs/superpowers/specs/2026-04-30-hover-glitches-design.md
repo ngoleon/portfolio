@@ -28,8 +28,8 @@ Out of scope: company names in experience cards, project titles, section labels 
 ### Chromatic split (first hover per element)
 
 - Implementation: animated `text-shadow` with two layers — one accent-red, one cyan.
-- Timing: ~220ms total, `steps(3, end)` — discontinuous snap rather than smooth ease.
-- Keyframe shape: 0 → (-2px red, +2px cyan) → (+3px red, -3px cyan) → 0. Asymmetric so it reads as "broken," not "vibrating."
+- Timing: ~220ms total, `steps(4, end)` — discontinuous snap rather than smooth ease. Keyframe percentages (0/25/50/75/100%) are aligned with the step count; mismatching them produces no visible animation.
+- Keyframe shape (4 visible chromatic states): clean → (-2px cyan, +2px red) → (+3px cyan, -3px red) → (-1px cyan, +1px red) → clean. Asymmetric so it reads as "broken," not "vibrating."
 - Cyan = `#00f0ff` (chosen as complement to the existing accent red).
 - Red = `var(--color-accent)`.
 - Composes with the existing `skewX(var(--skew-x))` on h2s without conflict because `text-shadow` inherits the skewed coordinate space automatically.
@@ -38,8 +38,8 @@ Out of scope: company names in experience cards, project titles, section labels 
 
 - Implementation: animated `translate` (CSS longhand, **not** `transform: translate(...)`).
 - Why the longhand: target elements already have `transform: skewX(var(--skew-x))`. The `transform` shorthand and `translate` longhand are independent in the CSS Transforms 2 spec — animating `translate` does not clobber the skew. No wrapper element required.
-- Timing: ~90ms total, `steps(1, end)`, repeated 2x. Hard punk-zine "tick."
-- Keyframe shape: 0 → (1px, -1px) → (-2px, 1px) → 0. Asymmetric.
+- Timing: ~90ms total, `steps(3, end)`, repeated 2x. Hard punk-zine "tick." Keyframe percentages (0/33/66/100%) are aligned with the step count.
+- Keyframe shape (3 visible jitter positions): (0.5px, 0.5px) → (1px, -1px) → (-2px, 1px) → 0. The 0% keyframe is intentionally a small offset rather than rest, so the first sampled step shows visible motion (with `steps(3, end)` the 0% position is held for the first ~30ms).
 - Debounce: re-fire only if >800ms since last trigger on that element. Prevents jitter fatigue from a user moving the mouse repeatedly across the same headline.
 
 ### Reduced motion
