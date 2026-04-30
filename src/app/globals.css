@@ -238,3 +238,28 @@ body {
   [data-glitch] { animation: none !important; }
 }
 
+
+/* ================================================================
+   HERO ENTRANCE — punchy fly-in choreography (~850ms total)
+   ================================================================ */
+
+/* DiagonalSlash uses inline style for skew, so its entrance keyframe
+   composes the static skew with an animated translateY in a single
+   transform shorthand. fill-mode: both keeps the final state. */
+@keyframes hero-slash-in {
+  0% {
+    opacity: 0;
+    transform: skewY(var(--skew-y)) skewX(var(--skew-x)) translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: skewY(var(--skew-y)) skewX(var(--skew-x)) translateY(0);
+  }
+}
+.hero-slash-in {
+  animation: hero-slash-in 400ms cubic-bezier(0.2, 0.8, 0.2, 1.05) 250ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slash-in { animation: none !important; }
+}

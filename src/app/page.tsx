@@ -59,9 +59,9 @@ export default function Home() {
           data-name
           className="absolute z-[5] max-w-[80%] md:max-w-[50%]"
           style={{ top: '4rem', left: '2rem' }}
-          initial={{ opacity: 0, y: -16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.2 }}
+          initial={{ opacity: 0, x: -60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.05 }}
         >
           <SectionLabel number="01" label="Index" />
           <div className="mt-2.5">
@@ -82,9 +82,9 @@ export default function Home() {
           data-tarot
           className="absolute z-[6]"
           style={{ top: '11rem', right: '4rem' }}
-          initial={{ opacity: 0, scale: 0.9, rotate: -4 }}
+          initial={{ opacity: 0, scale: 0.7, rotate: 8 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 0.3, ease: 'easeOut', delay: 0.1 }}
+          transition={{ duration: 0.35, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.15 }}
         >
           <Link href="#about" aria-label="Skip to About section" className="block">
             <TarotCard />
@@ -92,7 +92,7 @@ export default function Home() {
         </motion.div>
 
         {/* === Diagonal slash === */}
-        <DiagonalSlash top="28rem" height="clamp(60px, 10vw, 75px)" align="center">
+        <DiagonalSlash top="28rem" height="clamp(60px, 10vw, 75px)" align="center" className="hero-slash-in">
           DISTRIBUTED SYSTEMS{' '}
           <span className="text-[var(--color-accent)]">·</span> CLOUD{' '}
           <span className="text-[var(--color-accent)]">·</span> DEV TOOLS
@@ -103,9 +103,9 @@ export default function Home() {
           data-cluster
           className="absolute z-[6]"
           style={{ left: '2rem', top: '29rem' }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.6 }}
+          initial={{ opacity: 0, x: -60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.35, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.35 }}
         >
           <InfoCard label="// CURRENT MISSION">
             · NET 10 Microservices · Azure
@@ -121,9 +121,9 @@ export default function Home() {
           data-stamp
           className="absolute z-[6]"
           style={{ right: '2rem', bottom: '6rem' }}
-          initial={{ opacity: 0, scale: 0.85, rotate: -8 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.7 }}
+          initial={{ opacity: 0, x: 60, scale: 0.85, rotate: -10 }}
+          animate={{ opacity: 1, x: 0, scale: 1, rotate: 0 }}
+          transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.45 }}
         >
           <Link
             href="#projects"
