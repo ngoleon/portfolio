@@ -164,7 +164,7 @@ export default function Home() {
         style={{ minHeight: 'calc(100dvh - 6.5rem)' }}
       >
         <HalftoneField density="subtle" />
-        <div className="relative mx-auto grid max-w-6xl gap-10 md:grid-cols-[1fr_320px] z-[2]">
+        <div className="relative mx-auto grid w-full max-w-6xl gap-10 md:grid-cols-[1fr_320px] z-[2]">
           {/* Prose (top-left on desktop, 1st on mobile) */}
           <div>
             <ScrollReveal>
@@ -211,7 +211,7 @@ export default function Home() {
         style={{ minHeight: 'calc(100dvh - 6.5rem)' }}
       >
         <HalftoneField density="subtle" />
-        <div className="relative mx-auto max-w-6xl z-[2]">
+        <div className="relative mx-auto w-full max-w-6xl z-[2]">
           <ScrollReveal>
             <SectionLabel number="03" label="Experience" />
             <h2
@@ -236,7 +236,7 @@ export default function Home() {
         style={{ minHeight: 'calc(100dvh - 6.5rem)' }}
       >
         <HalftoneField density="subtle" />
-        <div className="relative mx-auto max-w-6xl z-[2]">
+        <div className="relative mx-auto w-full max-w-6xl z-[2]">
           <ScrollReveal>
             <SectionLabel number="04" label="Projects" />
             <h2
