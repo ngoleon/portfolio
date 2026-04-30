@@ -248,9 +248,13 @@ export default function Home() {
       </section>
 
       {/* === CONTACT === */}
-      <section id="contact" className="relative overflow-hidden px-6 py-24 sm:py-32">
+      <section
+        id="contact"
+        className="relative flex flex-col justify-center overflow-hidden px-6 py-24 sm:py-32"
+        style={{ minHeight: 'calc(100dvh - 6.5rem)' }}
+      >
         <HalftoneField density="medium" />
-        <div className="relative mx-auto max-w-5xl z-[2]">
+        <div className="relative mx-auto w-full max-w-5xl z-[2]">
           <ScrollReveal>
             <SectionLabel number="05" label="Contact" />
             <h2
@@ -265,7 +269,7 @@ export default function Home() {
             <a
               href="mailto:ngo.leon@gmail.com"
               className="inline-block font-display italic font-black text-[var(--color-accent)] transition-transform duration-200 ease-[var(--ease-snap)] hover:scale-[1.04]"
-              style={{ fontSize: 'clamp(1.25rem, 2.5vw, 2rem)', textShadow: 'var(--shadow-text-sm)' }}
+              style={{ fontSize: 'clamp(1.25rem, 2.5vw, 2rem)', textShadow: '3px 3px 0 var(--color-ink)' }}
             >
               ngo.leon@gmail.com ↗
             </a>
