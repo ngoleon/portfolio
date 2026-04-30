@@ -121,7 +121,11 @@ export default function Home() {
         </motion.div>
 
         {/* === Diagonal slash === */}
+        {/* data-slash on the parallax wrapper so the existing mobile rules
+            (which target `section[id='index'] > div[data-slash]`) still
+            hide it on narrow viewports and reset its positioning. */}
         <motion.div
+          data-slash
           className="pointer-events-none absolute inset-0 z-[3]"
           style={{ y: slashY }}
           aria-hidden="true"
