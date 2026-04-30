@@ -5,11 +5,11 @@ import { useActiveSection } from '@/hooks/useActiveSection';
 import ThemeToggle from './ThemeToggle';
 
 interface TopBarProps {
-  /** Center text, e.g. "SYDNEY · 2026" */
+  /** Center text, e.g. "MELBOURNE · 2026" */
   center?: string;
 }
 
-export default function TopBar({ center = 'SYDNEY · 2026' }: TopBarProps) {
+export default function TopBar({ center = 'MELBOURNE · 2026' }: TopBarProps) {
   const ids = sections.map((s) => s.href.replace('#', ''));
   const activeId = useActiveSection(ids);
   const total = String(sections.length).padStart(2, '0');
