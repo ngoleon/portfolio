@@ -263,3 +263,31 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .hero-slash-in { animation: none !important; }
 }
+
+/* ================================================================
+   BREATHING — symmetric pulse, ease-in-out for smoothness
+   ================================================================ */
+
+/* Symmetric peak in the middle = no stop/start jaggedness. Different
+   cycle lengths and peak heights keep the two from syncing. */
+@keyframes breathe-tarot {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
+}
+
+@keyframes breathe-stamp {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.075); }
+}
+
+.animate-breathe-tarot {
+  animation: breathe-tarot 1.5s ease-in-out 0.8s infinite;
+}
+.animate-breathe-stamp {
+  animation: breathe-stamp 1.2s ease-in-out 0.8s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-breathe-tarot,
+  .animate-breathe-stamp { animation: none !important; }
+}

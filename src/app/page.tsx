@@ -16,7 +16,8 @@ import Watermark from '@/components/ui/Watermark';
 import HalftoneField from '@/components/ui/HalftoneField';
 import ScrollReveal from '@/components/ScrollReveal';
 import Link from 'next/link';
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { useRef } from 'react';
 import { useGlitch } from '@/hooks/useGlitch';
 
 const socialLinks = [
@@ -29,11 +30,29 @@ export default function Home() {
   const experienceGlitch = useGlitch();
   const projectsGlitch = useGlitch();
   const contactGlitch = useGlitch();
+
+  // Scroll-driven parallax: scrollYProgress goes from 0 (hero top at viewport
+  // top) to 1 (hero bottom at viewport top). Each element maps progress to
+  // a translateY/rotate so they drift at different rates, giving depth.
+  const heroRef = useRef<HTMLElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+  const watermarkY = useTransform(scrollYProgress, [0, 1], [0, 80]);     // sinks slowly (background)
+  const slashY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const tarotY = useTransform(scrollYProgress, [0, 1], [0, -180]);
+  const tarotRot = useTransform(scrollYProgress, [0, 1], [0, -8]);
+  const missionY = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const stampY = useTransform(scrollYProgress, [0, 1], [0, -140]);
+  const stampRot = useTransform(scrollYProgress, [0, 1], [0, 12]);
+
   return (
     <>
       {/* === HERO / INDEX === */}
       <section
         id="index"
+        ref={heroRef}
         className="relative overflow-hidden"
         style={{
           // Reach the BottomNav so the red gradient meets the chrome
@@ -41,8 +60,14 @@ export default function Home() {
           minHeight: 'max(36rem, calc(100dvh - 3rem))',
         }}
       >
-        {/* Background watermark numeral */}
-        <Watermark number="01" position="bl" />
+        {/* Background watermark numeral — drifts down slowly as you scroll */}
+        <motion.div
+          className="pointer-events-none absolute inset-0 z-0"
+          style={{ y: watermarkY }}
+          aria-hidden="true"
+        >
+          <Watermark number="01" position="bl" />
+        </motion.div>
 
         {/* Subtle halftone field over whole hero */}
         <HalftoneField density="subtle" />
@@ -86,17 +111,27 @@ export default function Home() {
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 0.35, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.15 }}
         >
-          <Link href="#about" aria-label="Skip to About section" className="block">
-            <TarotCard />
-          </Link>
+          <motion.div style={{ y: tarotY, rotate: tarotRot }}>
+            <div className="animate-breathe-tarot">
+              <Link href="#about" aria-label="Skip to About section" className="block">
+                <TarotCard />
+              </Link>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* === Diagonal slash === */}
-        <DiagonalSlash top="28rem" height="clamp(60px, 10vw, 75px)" align="center" className="hero-slash-in">
-          DISTRIBUTED SYSTEMS{' '}
-          <span className="text-[var(--color-accent)]">·</span> CLOUD{' '}
-          <span className="text-[var(--color-accent)]">·</span> DEV TOOLS
-        </DiagonalSlash>
+        <motion.div
+          className="pointer-events-none absolute inset-0 z-[3]"
+          style={{ y: slashY }}
+          aria-hidden="true"
+        >
+          <DiagonalSlash top="28rem" height="clamp(60px, 10vw, 75px)" align="center" className="hero-slash-in">
+            DISTRIBUTED SYSTEMS{' '}
+            <span className="text-[var(--color-accent)]">·</span> CLOUD{' '}
+            <span className="text-[var(--color-accent)]">·</span> DEV TOOLS
+          </DiagonalSlash>
+        </motion.div>
 
         {/* === Bottom cluster: mission card === */}
         <motion.div
@@ -107,13 +142,15 @@ export default function Home() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.35, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.35 }}
         >
-          <InfoCard label="// CURRENT MISSION">
-            · NET 10 Microservices · Azure
-            <br />
-            · K8s · Terragrunt · ArgoCD
-            <br />
-            · AI-assisted dev tooling
-          </InfoCard>
+          <motion.div style={{ y: missionY }}>
+            <InfoCard label="// CURRENT MISSION">
+              · NET 10 Microservices · Azure
+              <br />
+              · K8s · Terragrunt · ArgoCD
+              <br />
+              · AI-assisted dev tooling
+            </InfoCard>
+          </motion.div>
         </motion.div>
 
         {/* === ROOT ACCESS stamp anchored bottom-right === */}
@@ -125,13 +162,17 @@ export default function Home() {
           animate={{ opacity: 1, x: 0, scale: 1, rotate: 0 }}
           transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.45 }}
         >
-          <Link
-            href="#projects"
-            aria-label="View selected projects"
-            className="inline-block"
-          >
-            <StampTag text="ROOT ACCESS GRANTED" rotate={7} />
-          </Link>
+          <motion.div style={{ y: stampY, rotate: stampRot }}>
+            <div className="animate-breathe-stamp">
+              <Link
+                href="#projects"
+                aria-label="View selected projects"
+                className="inline-block"
+              >
+                <StampTag text="ROOT ACCESS GRANTED" rotate={7} />
+              </Link>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* Narrow / mobile (<1024px): convert hero from absolute composition
