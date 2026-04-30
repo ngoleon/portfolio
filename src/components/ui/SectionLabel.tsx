@@ -5,7 +5,7 @@ interface SectionLabelProps {
 
 export default function SectionLabel({ number, label }: SectionLabelProps) {
   return (
-    <span className="inline-flex items-center font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-accent)] font-bold opacity-60 before:content-['▸_']">
+    <span className="inline-flex items-center font-mono text-[0.85rem] uppercase tracking-[0.2em] text-[var(--color-accent)] font-bold before:content-['▸_']">
       {number} / {label}
     </span>
   );

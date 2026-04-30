@@ -158,7 +158,11 @@ export default function Home() {
       </section>
 
       {/* === ABOUT === */}
-      <section id="about" className="relative overflow-hidden px-6 py-24 sm:py-32">
+      <section
+        id="about"
+        className="relative flex flex-col justify-center overflow-hidden px-6 py-24 sm:py-32"
+        style={{ minHeight: 'calc(100dvh - 6.5rem)' }}
+      >
         <HalftoneField density="subtle" />
         <div className="relative mx-auto grid max-w-6xl gap-10 md:grid-cols-[1fr_320px] z-[2]">
           {/* Prose (top-left on desktop, 1st on mobile) */}
@@ -201,7 +205,11 @@ export default function Home() {
       </section>
 
       {/* === EXPERIENCE === */}
-      <section id="experience" className="relative overflow-hidden px-6 py-24 sm:py-32">
+      <section
+        id="experience"
+        className="relative flex flex-col justify-center overflow-hidden px-6 py-24 sm:py-32"
+        style={{ minHeight: 'calc(100dvh - 6.5rem)' }}
+      >
         <HalftoneField density="subtle" />
         <div className="relative mx-auto max-w-6xl z-[2]">
           <ScrollReveal>
@@ -222,7 +230,11 @@ export default function Home() {
       </section>
 
       {/* === PROJECTS === */}
-      <section id="projects" className="relative px-6 py-24 sm:py-32">
+      <section
+        id="projects"
+        className="relative flex flex-col justify-center px-6 py-24 sm:py-32"
+        style={{ minHeight: 'calc(100dvh - 6.5rem)' }}
+      >
         <HalftoneField density="subtle" />
         <div className="relative mx-auto max-w-6xl z-[2]">
           <ScrollReveal>

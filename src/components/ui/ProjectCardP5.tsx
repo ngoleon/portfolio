@@ -25,7 +25,7 @@ export default function ProjectCardP5({ project, index }: ProjectCardP5Props) {
         <div style={{ transform: 'skewX(calc(-1 * var(--skew-x)))' }} className="relative z-[2]">
           <span
             aria-hidden="true"
-            className="absolute -right-2 -top-4 select-none font-display italic font-black text-[var(--color-accent)] opacity-20 leading-none"
+            className="absolute -right-2 -top-4 select-none font-display italic font-black text-[var(--color-accent)] opacity-10 leading-none"
             style={{ fontSize: 'clamp(4rem, 10vw, 8rem)' }}
           >
             {numeral}
