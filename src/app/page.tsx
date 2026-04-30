@@ -268,8 +268,8 @@ export default function Home() {
           <div className="mt-10">
             <a
               href="mailto:ngo.leon@gmail.com"
-              className="inline-block font-display italic font-black text-[var(--color-accent)] transition-transform duration-200 ease-[var(--ease-snap)] hover:scale-[1.04]"
-              style={{ fontSize: 'clamp(1.25rem, 2.5vw, 2rem)', textShadow: '4px 4px 0 var(--color-ink)' }}
+              className="inline-block font-display italic font-black text-[var(--color-ink)] transition-transform duration-200 ease-[var(--ease-snap)] hover:scale-[1.04]"
+              style={{ fontSize: 'clamp(1.25rem, 2.5vw, 2rem)', textShadow: '4px 4px 0 var(--color-accent)' }}
             >
               ngo.leon@gmail.com ↗
             </a>
