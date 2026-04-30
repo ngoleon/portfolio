@@ -123,7 +123,7 @@ export default function Home() {
     section[id='index'] {
       min-height: auto !important;
       max-height: none !important;
-      padding: 1.5rem 1rem 2rem;
+      padding: 1.5rem 1rem 4rem;
     }
     section[id='index'] > div[data-name],
     section[id='index'] > div[data-tarot],
