@@ -230,7 +230,7 @@ EOF
 **Files:**
 - Modify: `src/components/ui/HeroName.tsx`
 
-- [ ] **Step 1: Replace the file contents**
+- [x] **Step 1: Replace the file contents**
 
 Replace the entire file `src/components/ui/HeroName.tsx` with:
 
@@ -279,7 +279,7 @@ Notes:
 - `'use client'` at the top — `useRef` and `useGlitch` need to run in a client component. The component renders inside `page.tsx` which already has `'use client'`, but adding it here too is safer for any future reuse.
 - The `['--baseline-shadow' as string]` cast is the standard TypeScript pattern for setting CSS custom properties via the inline `style` prop.
 
-- [ ] **Step 2: Verify in the browser**
+- [ ] **Step 2: Verify in the browser** *(manual — controller verifies in Task 5)*
 
 Hard-refresh `http://localhost:3000/`.
 
@@ -290,7 +290,7 @@ Hard-refresh `http://localhost:3000/`.
 
 If any step fails, do NOT proceed — root-cause first. Likely culprits: hook not imported, `--baseline-shadow` not picked up (check DevTools computed styles), or the keyframes from Task 1 not present in the served CSS (hard refresh / DevTools "Disable cache").
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/components/ui/HeroName.tsx
