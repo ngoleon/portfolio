@@ -18,18 +18,16 @@ export default function ExperienceCardP5({ experience }: ExperienceCardP5Props) 
         style={{ transform: 'skewX(var(--skew-x))' }}
       >
         <div style={{ transform: 'skewX(calc(-1 * var(--skew-x)))' }}>
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <h3
-              className="font-display italic font-black tracking-[-0.03em] leading-[1.05]"
-              style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
-            >
-              {experience.company}
-            </h3>
-            <span className="font-mono text-[0.85rem] uppercase tracking-[0.15em] text-[var(--color-accent)]">
-              {experience.period}
-            </span>
-          </div>
+          <h3
+            className="font-display italic font-black tracking-[-0.03em] leading-[1.05]"
+            style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
+          >
+            {experience.company}
+          </h3>
           <p className="mt-1 font-mono text-base">{experience.role}</p>
+          <p className="mt-0.5 font-mono text-[0.7rem] sm:text-[0.85rem] uppercase tracking-[0.15em] text-[var(--color-accent)]">
+            {experience.period}
+          </p>
           <p className="mt-4 text-sm leading-relaxed sm:text-base">
             {experience.description}
           </p>
