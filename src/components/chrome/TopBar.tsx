@@ -15,7 +15,8 @@ export default function TopBar({ center = 'MELBOURNE · 2026' }: TopBarProps) {
   const total = String(sections.length).padStart(2, '0');
   const activeIdx = sections.findIndex((s) => s.href === `#${activeId}`);
   const current = String((activeIdx >= 0 ? activeIdx : 0) + 1).padStart(2, '0');
-  const activeLabel = (sections[activeIdx >= 0 ? activeIdx : 0]?.label ?? 'Index').toUpperCase();
+  const activeSection = sections[activeIdx >= 0 ? activeIdx : 0];
+  const activeLabel = (activeSection?.short ?? activeSection?.label ?? 'Index').toUpperCase();
 
   return (
     <header
