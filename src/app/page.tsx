@@ -111,12 +111,19 @@ export default function Home() {
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 0.35, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.15 }}
         >
-          <motion.div style={{ y: tarotY, rotate: tarotRot }}>
-            <div className="animate-breathe-tarot">
-              <Link href="#about" aria-label="Skip to About section" className="block">
-                <TarotCard />
-              </Link>
-            </div>
+          <motion.div
+            style={{ y: tarotY, rotate: tarotRot }}
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{
+              duration: 1.2,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay: 0.8,
+            }}
+          >
+            <Link href="#about" aria-label="Skip to About section" className="block">
+              <TarotCard />
+            </Link>
           </motion.div>
         </motion.div>
 
@@ -166,16 +173,23 @@ export default function Home() {
           animate={{ opacity: 1, x: 0, scale: 1, rotate: 0 }}
           transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1.05], delay: 0.45 }}
         >
-          <motion.div style={{ y: stampY, rotate: stampRot }}>
-            <div className="animate-breathe-stamp">
-              <Link
-                href="#projects"
-                aria-label="View selected projects"
-                className="inline-block"
-              >
-                <StampTag text="ROOT ACCESS GRANTED" rotate={7} />
-              </Link>
-            </div>
+          <motion.div
+            style={{ y: stampY, rotate: stampRot }}
+            animate={{ scale: [1, 1.075, 1] }}
+            transition={{
+              duration: 1.2,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay: 0.8,
+            }}
+          >
+            <Link
+              href="#projects"
+              aria-label="View selected projects"
+              className="inline-block"
+            >
+              <StampTag text="ROOT ACCESS GRANTED" rotate={7} />
+            </Link>
           </motion.div>
         </motion.div>
 

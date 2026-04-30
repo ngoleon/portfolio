@@ -264,32 +264,7 @@ body {
   .hero-slash-in { animation: none !important; }
 }
 
-/* ================================================================
-   BREATHING — symmetric pulse, ease-in-out for smoothness
-   ================================================================ */
-
-/* Symmetric peak in the middle = no stop/start jaggedness. Different
-   cycle lengths and peak heights keep the two from syncing. */
-@keyframes breathe-tarot {
-  0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.05); }
-}
-
-@keyframes breathe-stamp {
-  0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.075); }
-}
-
-/* Same cycle length so they pulse in sync — different peak heights keep
-   the visual character distinct. */
-.animate-breathe-tarot {
-  animation: breathe-tarot 1.2s ease-in-out 0.8s infinite;
-}
-.animate-breathe-stamp {
-  animation: breathe-stamp 1.2s ease-in-out 0.8s infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-breathe-tarot,
-  .animate-breathe-stamp { animation: none !important; }
-}
+/* Breathing pulses for tarot + stamp now live on motion.div directly
+   in page.tsx (motion's animate.scale) so all transforms compose through
+   one MotionValue stack — keeps the compositor's raster quality crisp
+   instead of stretching a base bitmap from a nested CSS-keyframe layer. */
