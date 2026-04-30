@@ -158,7 +158,8 @@ export default function Home() {
       margin: 0 0 2rem;
       transform: none !important;
     }
-    section[id='index'] > div[data-tarot] {
+    section[id='index'] > div[data-tarot],
+    section[id='index'] > div[data-cluster] {
       display: flex;
       justify-content: center;
     }
