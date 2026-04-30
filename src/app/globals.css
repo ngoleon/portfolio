@@ -173,3 +173,65 @@ body {
   transform: skewX(calc(-1 * var(--skew-x)));
 }
 
+/* ================================================================
+   HOVER GLITCHES — chromatic split on first hover, jitter after
+   ================================================================ */
+
+/* Default baseline; elements with their own resting text-shadow
+   override this on the element itself via inline style. */
+:where([data-glitch]) {
+  --baseline-shadow: 0 0 0 transparent;
+}
+
+/* Each keyframe position aligns with a step boundary — `steps(N, end)`
+   samples keyframe percentages 0, 1/N, 2/N, ..., (N-1)/N, then ends.
+   Mismatched step counts produce no visible animation, so changes here
+   must keep keyframe % aligned with the steps() value below. */
+
+@keyframes rgb-split {
+  0% {
+    text-shadow:
+      var(--baseline-shadow),
+      0 0 0 transparent,
+      0 0 0 transparent;
+  }
+  25% {
+    text-shadow:
+      var(--baseline-shadow),
+      -2px 0 0 #00f0ff,
+      2px 0 0 var(--color-accent);
+  }
+  50% {
+    text-shadow:
+      var(--baseline-shadow),
+      3px 0 0 #00f0ff,
+      -3px 0 0 var(--color-accent);
+  }
+  75% {
+    text-shadow:
+      var(--baseline-shadow),
+      -1px 0 0 #00f0ff,
+      1px 0 0 var(--color-accent);
+  }
+  100% {
+    text-shadow:
+      var(--baseline-shadow),
+      0 0 0 transparent,
+      0 0 0 transparent;
+  }
+}
+
+@keyframes glitch-tick {
+  0%   { translate: 0.5px 0.5px; }
+  33%  { translate: 1px -1px; }
+  66%  { translate: -2px 1px; }
+  100% { translate: 0 0; }
+}
+
+[data-glitch="split"]  { animation: rgb-split   220ms steps(4, end); }
+[data-glitch="jitter"] { animation: glitch-tick  90ms steps(3, end) 2; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-glitch] { animation: none !important; }
+}
+

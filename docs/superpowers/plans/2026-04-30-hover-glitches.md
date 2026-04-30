@@ -30,7 +30,7 @@ No test files — the codebase has no component test framework. Verification is 
 **Files:**
 - Modify: `src/app/globals.css` (append at end of file)
 
-- [ ] **Step 1: Append keyframes and selectors to globals.css**
+- [x] **Step 1: Append keyframes and selectors to globals.css**
 
 Add to the end of `src/app/globals.css`:
 
@@ -99,7 +99,7 @@ Add to the end of `src/app/globals.css`:
 }
 ```
 
-- [ ] **Step 2: Verify the dev server still serves the page**
+- [x] **Step 2: Verify the dev server still serves the page**
 
 Run (server should already be up via `npm run dev`):
 
@@ -113,7 +113,7 @@ Expected: `HTTP 200`. If the server is not running, start it:
 PATH="$HOME/.nvm/versions/node/v24.14.0/bin:$PATH" npm run dev
 ```
 
-- [ ] **Step 3: Smoke-test the keyframes by hand in DevTools**
+- [ ] **Step 3: Smoke-test the keyframes by hand in DevTools** *(manual — controller verifies in Task 5)*
 
 Open `http://localhost:3000/` in a browser. Open DevTools → Elements. Inspect any headline `<h1>` or `<h2>`. In the Styles panel, manually add `data-glitch="split"` to its DOM attributes (or use the Console: `document.querySelector('h1').dataset.glitch = 'split'`).
 
@@ -125,7 +125,7 @@ Expected: the headline shudders 1–2px for ~180ms total.
 
 Remove the attribute when done. (Hook will manage this in later tasks.)
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/app/globals.css
