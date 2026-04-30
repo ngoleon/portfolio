@@ -31,11 +31,9 @@ export default function Home() {
         id="index"
         className="relative overflow-hidden"
         style={{
-          // Always at least tall enough for the composition (36rem),
-          // grows up to 56rem on large screens. Page becomes
-          // scrollable when the viewport is shorter than 36rem.
-          minHeight: 'max(36rem, calc(100dvh - 6.5rem))',
-          maxHeight: '56rem',
+          // Reach the BottomNav so the red gradient meets the chrome
+          // without a dark gap (subtract only the TopBar height).
+          minHeight: 'max(36rem, calc(100dvh - 3rem))',
         }}
       >
         {/* Background watermark numeral */}
@@ -48,7 +46,7 @@ export default function Home() {
         <div
           aria-hidden="true"
           className="pointer-events-none absolute bottom-0 left-0 right-0 h-1/2"
-          style={{ background: 'linear-gradient(0deg, color-mix(in oklab, var(--color-accent) 32%, transparent), transparent)' }}
+          style={{ background: 'linear-gradient(0deg, color-mix(in oklab, var(--color-accent) 18%, transparent), transparent)' }}
         />
 
         {/* === Name zone === */}
