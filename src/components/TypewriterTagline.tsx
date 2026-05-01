@@ -22,7 +22,7 @@ const FALLBACK_TEXT = '// distributed systems · dev tools';
 const SR_TEXT = 'distributed systems · dev tools';
 
 const PROGRAM: readonly Op[] = [
-  // Boot phrases — full type, full delete
+  // Boot phrases
   { kind: 'TYPE',   target: '// loading context7...' },
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'DELETE', target: '' },
@@ -31,21 +31,20 @@ const PROGRAM: readonly Op[] = [
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'DELETE', target: '' },
   { kind: 'PAUSE',  ms: PAUSE_MS },
-  // First "I" line — typed from empty, then deletes back to the prefix
-  { kind: 'TYPE',   target: '// I solve problems' },
+  // Descriptor phrases
+  { kind: 'TYPE',   target: '// distributed systems · dev tooling' },
   { kind: 'HOLD',   ms: HOLD_MS },
-  { kind: 'DELETE', target: '// I ' },
-  // Subsequent "I" lines — typed by appending to the persistent prefix
-  { kind: 'TYPE',   target: '// I build cool things' },
+  { kind: 'DELETE', target: '' },
+  { kind: 'PAUSE',  ms: PAUSE_MS },
+  { kind: 'TYPE',   target: '// microservices · cloud infrastructure' },
   { kind: 'HOLD',   ms: HOLD_MS },
-  { kind: 'DELETE', target: '// I ' },
-  { kind: 'TYPE',   target: '// I make lives easier' },
-  { kind: 'HOLD',   ms: HOLD_MS },
-  // Error punchline
-  { kind: 'DELETE', target: '// I' },        // strips trailing space too
-  { kind: 'TYPE',   target: '// I-' },       // types just '-'
+  { kind: 'DELETE', target: '' },
+  { kind: 'PAUSE',  ms: PAUSE_MS },
+  // Error punchline — system tries to type another phrase, only gets the
+  // comment marker out before hitting the token limit
+  { kind: 'TYPE',   target: '//' },
   { kind: 'INJECT_ERROR' },
-  { kind: 'HOLD',   ms: 3000 },              // longer beat for the joke
+  { kind: 'HOLD',   ms: 3000 },
   { kind: 'HARD_RESET' },
 ];
 
@@ -191,7 +190,7 @@ export default function TypewriterTagline() {
   return (
     <span
       className="text-[var(--color-accent)] inline-block"
-      style={{ minWidth: '36ch' }}
+      style={{ minWidth: '42ch' }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
