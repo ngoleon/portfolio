@@ -6,8 +6,7 @@ type Op =
   | { kind: 'TYPE'; target: string }
   | { kind: 'DELETE'; target: string }
   | { kind: 'HOLD'; ms: number }
-  | { kind: 'PAUSE'; ms: number }
-  | { kind: 'HARD_RESET' };
+  | { kind: 'PAUSE'; ms: number };
 
 const TYPE_MS = 60;
 const DELETE_MS = 30;
@@ -45,7 +44,10 @@ const PROGRAM: readonly Op[] = [
   { kind: 'DELETE', target: '> ' },
   { kind: 'TYPE',   target: '> tighten the loop' },
   { kind: 'HOLD',   ms: HOLD_MS },
-  { kind: 'HARD_RESET' },
+  // Animated delete back to empty so the loop wraps smoothly into
+  // '$ rtk whoami' instead of snap-cutting.
+  { kind: 'DELETE', target: '' },
+  { kind: 'PAUSE',  ms: PAUSE_MS },
 ];
 
 const jitter = () => (Math.random() * 2 - 1) * JITTER_MS;
@@ -131,14 +133,6 @@ export default function TypewriterTagline() {
           setCaretActive(false);
           opIndexRef.current++;
           schedule(tick, op.ms);
-          break;
-        }
-        case 'HARD_RESET': {
-          textRef.current = '';
-          setText('');
-          setCaretActive(false);
-          opIndexRef.current = 0;
-          tick();
           break;
         }
       }
