@@ -12,6 +12,7 @@ import TarotCard from '@/components/ui/TarotCard';
 import DiagonalSlash from '@/components/ui/DiagonalSlash';
 import InfoCard from '@/components/ui/InfoCard';
 import StampTag from '@/components/ui/StampTag';
+import TypewriterTagline from '@/components/TypewriterTagline';
 import Watermark from '@/components/ui/Watermark';
 import HalftoneField from '@/components/ui/HalftoneField';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -98,7 +99,7 @@ export default function Home() {
           >
             Software Engineer{' '}
             <br className="xl:hidden" />
-            <span className="text-[var(--color-accent)]">{'// distributed systems · dev tools'}</span>
+            <TypewriterTagline />
           </p>
         </motion.div>
 
