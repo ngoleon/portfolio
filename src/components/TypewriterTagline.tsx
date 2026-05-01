@@ -60,6 +60,8 @@ export default function TypewriterTagline() {
   const textRef = useRef(SSR_TEXT);
   const opIndexRef = useRef(0);
   const timeoutRef = useRef<number | undefined>(undefined);
+  const pausedRef = useRef(false);
+  const tickRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -81,7 +83,7 @@ export default function TypewriterTagline() {
 
     const schedule = (fn: () => void, delay: number) => {
       timeoutRef.current = window.setTimeout(() => {
-        if (cancelled) return;
+        if (cancelled || pausedRef.current) return;
         fn();
       }, delay);
     };
@@ -148,6 +150,8 @@ export default function TypewriterTagline() {
       }
     };
 
+    tickRef.current = tick;
+
     // SSR text is already showing. Wait for hero entrance, then
     // hard-cut to empty and start the program from the top — the
     // brief "snap to empty" reads as the system rebooting into life.
@@ -160,14 +164,33 @@ export default function TypewriterTagline() {
 
     return () => {
       cancelled = true;
+      tickRef.current = null;
       if (timeoutRef.current !== undefined) {
         window.clearTimeout(timeoutRef.current);
       }
     };
   }, [reducedMotion]);
 
+  const onMouseEnter = () => {
+    pausedRef.current = true;
+    if (timeoutRef.current !== undefined) {
+      window.clearTimeout(timeoutRef.current);
+      timeoutRef.current = undefined;
+    }
+  };
+
+  const onMouseLeave = () => {
+    pausedRef.current = false;
+    tickRef.current?.();
+  };
+
   return (
-    <span className="text-[var(--color-accent)]">
+    <span
+      className="text-[var(--color-accent)] inline-block"
+      style={{ minWidth: '34ch' }}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <span aria-hidden="true">
         {text}
         {errorInjected && (
