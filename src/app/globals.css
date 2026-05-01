@@ -268,3 +268,32 @@ body {
    in page.tsx (motion's animate.scale) so all transforms compose through
    one MotionValue stack — keeps the compositor's raster quality crisp
    instead of stretching a base bitmap from a nested CSS-keyframe layer. */
+
+/* ================================================================
+   TYPEWRITER TAGLINE — caret blink
+   ================================================================ */
+
+@keyframes tw-blink {
+  0%, 49%   { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.tw-caret {
+  display: inline-block;
+  width: 0.6ch;
+  height: 1em;
+  margin-left: 1px;
+  background-color: currentColor;
+  vertical-align: -0.12em;
+  animation: tw-blink 1.06s steps(2, end) infinite;
+}
+
+/* When typing/deleting is in flight, hold the caret solid. */
+.tw-caret[data-state='active'] {
+  animation: none;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-caret { animation: none; }
+}

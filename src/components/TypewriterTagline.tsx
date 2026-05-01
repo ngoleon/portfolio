@@ -8,7 +8,6 @@ export default function TypewriterTagline() {
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
     const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
     setReducedMotion(mql.matches);
     const onChange = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
@@ -18,7 +17,10 @@ export default function TypewriterTagline() {
 
   return (
     <span className="text-[var(--color-accent)]">
-      <span aria-hidden="true">{FALLBACK_TEXT}</span>
+      <span aria-hidden="true">
+        {FALLBACK_TEXT}
+        <span className="tw-caret" />
+      </span>
       <span className="sr-only">distributed systems · dev tools</span>
     </span>
   );
