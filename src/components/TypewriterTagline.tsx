@@ -16,32 +16,35 @@ const PAUSE_MS = 300;
 const JITTER_MS = 10;
 const START_DELAY_MS = 450;
 
-const SSR_TEXT = '$ loading context7...';
-const FALLBACK_TEXT = '$ distributed systems · dev tooling';
-const SR_TEXT = 'distributed systems · dev tooling';
+const SSR_TEXT = 'loading context7...';
+const FALLBACK_TEXT = '> tighten the loop';
+const SR_TEXT = 'software engineer · dev tooling';
 
 const PROGRAM: readonly Op[] = [
-  // Boot phrases
-  { kind: 'TYPE',   target: '$ loading context7...' },
+  // Identity + context
+  { kind: 'TYPE',   target: 'rtk whoami' },
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'DELETE', target: '' },
   { kind: 'PAUSE',  ms: PAUSE_MS },
-  { kind: 'TYPE',   target: '$ rtk whoami' },
+  { kind: 'TYPE',   target: 'loading context7...' },
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'DELETE', target: '' },
   { kind: 'PAUSE',  ms: PAUSE_MS },
-  // Descriptor phrases
-  { kind: 'TYPE',   target: '$ distributed systems · dev tooling' },
+  // The engineering loop — last line is meta-self-referential to the
+  // cycle on this page; HARD_RESET after it tightens the loop literally.
+  { kind: 'TYPE',   target: '> spec the system' },
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'DELETE', target: '' },
   { kind: 'PAUSE',  ms: PAUSE_MS },
-  { kind: 'TYPE',   target: '$ microservices · cloud infrastructure' },
+  { kind: 'TYPE',   target: '> automate the path' },
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'DELETE', target: '' },
   { kind: 'PAUSE',  ms: PAUSE_MS },
-  // Closer — typing /clear (the Claude Code slash command) is what loops
-  // the cycle. HARD_RESET is the visual "clear" effect.
-  { kind: 'TYPE',   target: '/clear' },
+  { kind: 'TYPE',   target: '> observe the behaviour' },
+  { kind: 'HOLD',   ms: HOLD_MS },
+  { kind: 'DELETE', target: '' },
+  { kind: 'PAUSE',  ms: PAUSE_MS },
+  { kind: 'TYPE',   target: '> tighten the loop' },
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'HARD_RESET' },
 ];
@@ -179,7 +182,7 @@ export default function TypewriterTagline() {
   return (
     <span
       className="text-[var(--color-accent)] inline-block"
-      style={{ minWidth: '40ch' }}
+      style={{ minWidth: '26ch' }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
