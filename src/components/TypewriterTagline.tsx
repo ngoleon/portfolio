@@ -6,7 +6,9 @@ type Op =
   | { kind: 'TYPE'; target: string }
   | { kind: 'DELETE'; target: string }
   | { kind: 'HOLD'; ms: number }
-  | { kind: 'PAUSE'; ms: number };
+  | { kind: 'PAUSE'; ms: number }
+  | { kind: 'INJECT_ERROR' }
+  | { kind: 'HARD_RESET' };
 
 const TYPE_MS = 60;
 const DELETE_MS = 30;
@@ -39,6 +41,12 @@ const PROGRAM: readonly Op[] = [
   { kind: 'DELETE', target: '// I ' },
   { kind: 'TYPE',   target: '// I make lives easier' },
   { kind: 'HOLD',   ms: HOLD_MS },
+  // Error punchline
+  { kind: 'DELETE', target: '// I' },        // strips trailing space too
+  { kind: 'TYPE',   target: '// I-' },       // types just '-'
+  { kind: 'INJECT_ERROR' },
+  { kind: 'HOLD',   ms: 3000 },              // longer beat for the joke
+  { kind: 'HARD_RESET' },
 ];
 
 const jitter = () => (Math.random() * 2 - 1) * JITTER_MS;
@@ -47,6 +55,7 @@ export default function TypewriterTagline() {
   const [reducedMotion, setReducedMotion] = useState(false);
   const [text, setText] = useState(SSR_TEXT);
   const [caretActive, setCaretActive] = useState(false);
+  const [errorInjected, setErrorInjected] = useState(false);
 
   const textRef = useRef(SSR_TEXT);
   const opIndexRef = useRef(0);
@@ -120,6 +129,22 @@ export default function TypewriterTagline() {
           schedule(tick, op.ms);
           break;
         }
+        case 'INJECT_ERROR': {
+          setErrorInjected(true);
+          setCaretActive(false);
+          opIndexRef.current++;
+          tick();
+          break;
+        }
+        case 'HARD_RESET': {
+          textRef.current = '';
+          setText('');
+          setErrorInjected(false);
+          setCaretActive(false);
+          opIndexRef.current = 0;
+          tick();
+          break;
+        }
       }
     };
 
@@ -145,6 +170,14 @@ export default function TypewriterTagline() {
     <span className="text-[var(--color-accent)]">
       <span aria-hidden="true">
         {text}
+        {errorInjected && (
+          <span
+            className="italic"
+            style={{ color: 'var(--color-accent-deep)' }}
+          >
+            {' ERROR *token limit reached*'}
+          </span>
+        )}
         <span className="tw-caret" data-state={caretActive ? 'active' : undefined} />
       </span>
       <span className="sr-only">{SR_TEXT}</span>
