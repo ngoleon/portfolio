@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 
 type Op =
   | { kind: 'TYPE'; target: string }
@@ -51,8 +51,25 @@ const PROGRAM: readonly Op[] = [
 
 const jitter = () => (Math.random() * 2 - 1) * JITTER_MS;
 
+const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
+
+const subscribeReducedMotion = (callback: () => void) => {
+  const mql = window.matchMedia(REDUCED_MOTION_QUERY);
+  mql.addEventListener('change', callback);
+  return () => mql.removeEventListener('change', callback);
+};
+
+const getReducedMotionSnapshot = () =>
+  window.matchMedia(REDUCED_MOTION_QUERY).matches;
+
+const getReducedMotionServerSnapshot = () => false;
+
 export default function TypewriterTagline() {
-  const [reducedMotion, setReducedMotion] = useState(false);
+  const reducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotionSnapshot,
+    getReducedMotionServerSnapshot,
+  );
   const [text, setText] = useState(SSR_TEXT);
   const [caretActive, setCaretActive] = useState(false);
   const [errorInjected, setErrorInjected] = useState(false);
@@ -64,20 +81,7 @@ export default function TypewriterTagline() {
   const tickRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
-    const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReducedMotion(mql.matches);
-    const onChange = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
-    mql.addEventListener('change', onChange);
-    return () => mql.removeEventListener('change', onChange);
-  }, []);
-
-  useEffect(() => {
-    if (reducedMotion) {
-      textRef.current = FALLBACK_TEXT;
-      setText(FALLBACK_TEXT);
-      setCaretActive(false);
-      return;
-    }
+    if (reducedMotion) return;
 
     let cancelled = false;
 
@@ -192,8 +196,8 @@ export default function TypewriterTagline() {
       onMouseLeave={onMouseLeave}
     >
       <span aria-hidden="true">
-        {text}
-        {errorInjected && (
+        {reducedMotion ? FALLBACK_TEXT : text}
+        {!reducedMotion && errorInjected && (
           <span
             className="italic"
             style={{ color: 'var(--color-accent-deep)' }}
