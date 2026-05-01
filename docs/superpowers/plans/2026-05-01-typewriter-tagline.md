@@ -47,7 +47,6 @@ export default function TypewriterTagline() {
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
     const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
     setReducedMotion(mql.matches);
     const onChange = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
@@ -181,7 +180,6 @@ export default function TypewriterTagline() {
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
     const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
     setReducedMotion(mql.matches);
     const onChange = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
@@ -284,7 +282,6 @@ export default function TypewriterTagline() {
   const timeoutRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
     const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
     setReducedMotion(mql.matches);
     const onChange = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
