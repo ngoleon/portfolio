@@ -20,6 +20,7 @@ const FALLBACK_TEXT = '// distributed systems · dev tools';
 const SR_TEXT = 'distributed systems · dev tools';
 
 const PROGRAM: readonly Op[] = [
+  // Boot phrases — full type, full delete
   { kind: 'TYPE',   target: '// loading context7...' },
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'DELETE', target: '' },
@@ -28,6 +29,16 @@ const PROGRAM: readonly Op[] = [
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'DELETE', target: '' },
   { kind: 'PAUSE',  ms: PAUSE_MS },
+  // First "I" line — typed from empty, then deletes back to the prefix
+  { kind: 'TYPE',   target: '// I solve problems' },
+  { kind: 'HOLD',   ms: HOLD_MS },
+  { kind: 'DELETE', target: '// I ' },
+  // Subsequent "I" lines — typed by appending to the persistent prefix
+  { kind: 'TYPE',   target: '// I build cool things' },
+  { kind: 'HOLD',   ms: HOLD_MS },
+  { kind: 'DELETE', target: '// I ' },
+  { kind: 'TYPE',   target: '// I make lives easier' },
+  { kind: 'HOLD',   ms: HOLD_MS },
 ];
 
 const jitter = () => (Math.random() * 2 - 1) * JITTER_MS;
