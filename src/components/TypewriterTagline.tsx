@@ -16,34 +16,34 @@ const PAUSE_MS = 300;
 const JITTER_MS = 10;
 const START_DELAY_MS = 450;
 
-const SSR_TEXT = 'loading context7...';
+const SSR_TEXT = '// loading context7...';
 const FALLBACK_TEXT = '> tighten the loop';
 const SR_TEXT = 'software engineer · dev tooling';
 
 const PROGRAM: readonly Op[] = [
-  // Identity + context
-  { kind: 'TYPE',   target: 'rtk whoami' },
+  // Shell: identity command
+  { kind: 'TYPE',   target: '$ rtk whoami' },
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'DELETE', target: '' },
   { kind: 'PAUSE',  ms: PAUSE_MS },
-  { kind: 'TYPE',   target: 'loading context7...' },
+  // Comment: status output
+  { kind: 'TYPE',   target: '// loading context7...' },
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'DELETE', target: '' },
   { kind: 'PAUSE',  ms: PAUSE_MS },
-  // The engineering loop — last line is meta-self-referential to the
-  // cycle on this page; HARD_RESET after it tightens the loop literally.
+  // Workflow loop — first line types from empty, then the persistent
+  // '> ' prefix carries through subsequent steps. The last line is
+  // meta-self-referential to the cycle on this page; HARD_RESET after
+  // tightens the loop literally.
   { kind: 'TYPE',   target: '> spec the system' },
   { kind: 'HOLD',   ms: HOLD_MS },
-  { kind: 'DELETE', target: '' },
-  { kind: 'PAUSE',  ms: PAUSE_MS },
+  { kind: 'DELETE', target: '> ' },
   { kind: 'TYPE',   target: '> automate the path' },
   { kind: 'HOLD',   ms: HOLD_MS },
-  { kind: 'DELETE', target: '' },
-  { kind: 'PAUSE',  ms: PAUSE_MS },
+  { kind: 'DELETE', target: '> ' },
   { kind: 'TYPE',   target: '> observe the behaviour' },
   { kind: 'HOLD',   ms: HOLD_MS },
-  { kind: 'DELETE', target: '' },
-  { kind: 'PAUSE',  ms: PAUSE_MS },
+  { kind: 'DELETE', target: '> ' },
   { kind: 'TYPE',   target: '> tighten the loop' },
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'HARD_RESET' },
