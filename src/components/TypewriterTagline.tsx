@@ -16,7 +16,7 @@ const PAUSE_MS = 300;
 const JITTER_MS = 10;
 const START_DELAY_MS = 450;
 
-const SSR_TEXT = '// loading context7...';
+const SSR_TEXT = '> loading context7...';
 const FALLBACK_TEXT = '> tighten the loop';
 const SR_TEXT = 'software engineer · dev tooling';
 
@@ -26,15 +26,14 @@ const PROGRAM: readonly Op[] = [
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'DELETE', target: '' },
   { kind: 'PAUSE',  ms: PAUSE_MS },
-  // Comment: status output
-  { kind: 'TYPE',   target: '// loading context7...' },
+  // Workflow loop — load context, spec, automate, observe, tighten. The
+  // first '> ' line types from empty, then the persistent prefix carries
+  // through every subsequent step. The closer is meta-self-referential
+  // to the cycle on this page; HARD_RESET after tightens the loop
+  // literally.
+  { kind: 'TYPE',   target: '> loading context7...' },
   { kind: 'HOLD',   ms: HOLD_MS },
-  { kind: 'DELETE', target: '' },
-  { kind: 'PAUSE',  ms: PAUSE_MS },
-  // Workflow loop — first line types from empty, then the persistent
-  // '> ' prefix carries through subsequent steps. The last line is
-  // meta-self-referential to the cycle on this page; HARD_RESET after
-  // tightens the loop literally.
+  { kind: 'DELETE', target: '> ' },
   { kind: 'TYPE',   target: '> spec the system' },
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'DELETE', target: '> ' },
