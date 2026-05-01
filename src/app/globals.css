@@ -295,5 +295,8 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tw-caret { animation: none; }
+  .tw-caret {
+    animation: none;
+    opacity: 1;
+  }
 }
