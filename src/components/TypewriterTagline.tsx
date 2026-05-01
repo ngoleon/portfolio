@@ -19,7 +19,7 @@ const SSR_TEXT = '// loading context7...';
 const FALLBACK_TEXT = '// distributed systems · dev tools';
 const SR_TEXT = 'distributed systems · dev tools';
 
-const PROGRAM: Op[] = [
+const PROGRAM: readonly Op[] = [
   { kind: 'TYPE',   target: '// loading context7...' },
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'DELETE', target: '' },

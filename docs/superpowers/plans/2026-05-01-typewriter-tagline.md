@@ -259,7 +259,7 @@ const SSR_TEXT = '// loading context7...';
 const FALLBACK_TEXT = '// distributed systems · dev tools';
 const SR_TEXT = 'distributed systems · dev tools';
 
-const PROGRAM: Op[] = [
+const PROGRAM: readonly Op[] = [
   { kind: 'TYPE',   target: '// loading context7...' },
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'DELETE', target: '' },
@@ -431,7 +431,7 @@ Extend the program to include phrases 3, 4, 5. Lines 4 and 5 only delete back to
 In `src/components/TypewriterTagline.tsx`, replace the `PROGRAM` array with:
 
 ```tsx
-const PROGRAM: Op[] = [
+const PROGRAM: readonly Op[] = [
   // Boot phrases — full type, full delete
   { kind: 'TYPE',   target: '// loading context7...' },
   { kind: 'HOLD',   ms: HOLD_MS },
@@ -520,7 +520,7 @@ const [errorInjected, setErrorInjected] = useState(false);
 Append the error-and-reset ops to `PROGRAM` (after the existing `// I make lives easier` HOLD):
 
 ```tsx
-const PROGRAM: Op[] = [
+const PROGRAM: readonly Op[] = [
   // ... unchanged ops above ...
   { kind: 'TYPE',   target: '// I make lives easier' },
   { kind: 'HOLD',   ms: HOLD_MS },
