@@ -699,7 +699,7 @@ const onMouseLeave = () => {
 return (
   <span
     className="text-[var(--color-accent)] inline-block"
-    style={{ minWidth: '34ch' }}
+    style={{ minWidth: '36ch' }}
     onMouseEnter={onMouseEnter}
     onMouseLeave={onMouseLeave}
   >
@@ -721,11 +721,11 @@ return (
 ```
 
 Notes:
-- `inline-block` + `minWidth: '34ch'` reserves horizontal space. The longest visible string is `// I- ERROR *token limit reached*` at 33 characters; 34ch gives a 1ch buffer. If the page layout reflows visibly when phrase 6 lands, bump to 36ch.
+- `inline-block` + `minWidth: '36ch'` reserves horizontal space. The longest visible string is `// I- ERROR *token limit reached*` at 33 characters; the parent `<p>` carries `tracking-[0.04em]` letter-spacing which `ch` units don't account for, so 36ch gives breathing room beyond the raw character count.
 - `onMouseLeave` calls `tickRef.current?.()` — `tick()` reads `opIndexRef`/`textRef` to determine current op state and resumes from there. No special bookkeeping for mid-character pauses; the next character (or HOLD, or whatever was next) just fires.
 
 Notes:
-- `inline-block` + `minWidth: '34ch'` reserves horizontal space. The longest visible string is `// I- ERROR *token limit reached*` at 33 characters; 34ch gives a 1ch buffer. If the page layout reflows visibly when phrase 6 lands, bump to 36ch.
+- `inline-block` + `minWidth: '36ch'` reserves horizontal space. The longest visible string is `// I- ERROR *token limit reached*` at 33 characters; the parent `<p>` carries `tracking-[0.04em]` letter-spacing which `ch` units don't account for, so 36ch gives breathing room beyond the raw character count.
 - Adding `onMouseEnter`/`onMouseLeave` to the outer span captures hover over the whole tagline area (including caret and any error text).
 - When paused mid-typing (e.g., halfway through `make lives easier`), the next tick is queued via `resumeRef`. On mouse-leave, that queued tick fires immediately — picking up exactly where we left off rather than restarting the phrase or skipping ahead.
 
@@ -866,7 +866,7 @@ With `npm run dev`, hard-refresh and watch one full cycle without interaction. R
 
 - [ ] Mid-type pause: cursor over tagline during typing. Pauses cleanly.
 - [ ] Mid-delete pause: hover during deletion. Pauses cleanly.
-- [ ] Hold pause: hover during a HOLD. Hold extends.
+- [ ] Hold pause: hover during a HOLD. Cycle pauses indefinitely; mouse-leave advances to the next op (does not replay the remaining HOLD time).
 - [ ] Error pause: hover during the ERROR display. Error stays.
 - [ ] Resume from each: leaves cursor → resumes from where it was, no restart.
 

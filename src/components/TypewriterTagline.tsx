@@ -187,7 +187,7 @@ export default function TypewriterTagline() {
   return (
     <span
       className="text-[var(--color-accent)] inline-block"
-      style={{ minWidth: '34ch' }}
+      style={{ minWidth: '36ch' }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
