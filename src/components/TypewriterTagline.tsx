@@ -7,7 +7,6 @@ type Op =
   | { kind: 'DELETE'; target: string }
   | { kind: 'HOLD'; ms: number }
   | { kind: 'PAUSE'; ms: number }
-  | { kind: 'INJECT_ERROR' }
   | { kind: 'HARD_RESET' };
 
 const TYPE_MS = 60;
@@ -17,34 +16,33 @@ const PAUSE_MS = 300;
 const JITTER_MS = 10;
 const START_DELAY_MS = 450;
 
-const SSR_TEXT = '// loading context7...';
-const FALLBACK_TEXT = '// distributed systems · dev tools';
-const SR_TEXT = 'distributed systems · dev tools';
+const SSR_TEXT = '$ loading context7...';
+const FALLBACK_TEXT = '$ distributed systems · dev tooling';
+const SR_TEXT = 'distributed systems · dev tooling';
 
 const PROGRAM: readonly Op[] = [
   // Boot phrases
-  { kind: 'TYPE',   target: '// loading context7...' },
+  { kind: 'TYPE',   target: '$ loading context7...' },
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'DELETE', target: '' },
   { kind: 'PAUSE',  ms: PAUSE_MS },
-  { kind: 'TYPE',   target: '// rtk whoami' },
+  { kind: 'TYPE',   target: '$ rtk whoami' },
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'DELETE', target: '' },
   { kind: 'PAUSE',  ms: PAUSE_MS },
   // Descriptor phrases
-  { kind: 'TYPE',   target: '// distributed systems · dev tooling' },
+  { kind: 'TYPE',   target: '$ distributed systems · dev tooling' },
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'DELETE', target: '' },
   { kind: 'PAUSE',  ms: PAUSE_MS },
-  { kind: 'TYPE',   target: '// microservices · cloud infrastructure' },
+  { kind: 'TYPE',   target: '$ microservices · cloud infrastructure' },
   { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'DELETE', target: '' },
   { kind: 'PAUSE',  ms: PAUSE_MS },
-  // Error punchline — system tries to type another phrase, only gets the
-  // comment marker out before hitting the token limit
-  { kind: 'TYPE',   target: '//' },
-  { kind: 'INJECT_ERROR' },
-  { kind: 'HOLD',   ms: 3000 },
+  // Closer — typing /clear (the Claude Code slash command) is what loops
+  // the cycle. HARD_RESET is the visual "clear" effect.
+  { kind: 'TYPE',   target: '/clear' },
+  { kind: 'HOLD',   ms: HOLD_MS },
   { kind: 'HARD_RESET' },
 ];
 
@@ -71,7 +69,6 @@ export default function TypewriterTagline() {
   );
   const [text, setText] = useState(SSR_TEXT);
   const [caretActive, setCaretActive] = useState(false);
-  const [errorInjected, setErrorInjected] = useState(false);
 
   const textRef = useRef(SSR_TEXT);
   const opIndexRef = useRef(0);
@@ -134,17 +131,9 @@ export default function TypewriterTagline() {
           schedule(tick, op.ms);
           break;
         }
-        case 'INJECT_ERROR': {
-          setErrorInjected(true);
-          setCaretActive(false);
-          opIndexRef.current++;
-          tick();
-          break;
-        }
         case 'HARD_RESET': {
           textRef.current = '';
           setText('');
-          setErrorInjected(false);
           setCaretActive(false);
           opIndexRef.current = 0;
           tick();
@@ -190,20 +179,12 @@ export default function TypewriterTagline() {
   return (
     <span
       className="text-[var(--color-accent)] inline-block"
-      style={{ minWidth: '42ch' }}
+      style={{ minWidth: '40ch' }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
       <span aria-hidden="true">
         {reducedMotion ? FALLBACK_TEXT : text}
-        {!reducedMotion && errorInjected && (
-          <span
-            className="italic"
-            style={{ color: 'var(--color-accent-deep)' }}
-          >
-            {' ERROR *token limit reached*'}
-          </span>
-        )}
         <span className="tw-caret" data-state={caretActive ? 'active' : undefined} />
       </span>
       <span className="sr-only">{SR_TEXT}</span>
